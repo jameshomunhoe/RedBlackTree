@@ -223,7 +223,7 @@ void test_addRedBlackTree_3_degree_add_10_to_tree_with_root_1(void){
 
 /**
 *	 root				root
-*	  |		 add 10		 |
+*	  |		 add 5		 |
 *	  v		 ---->		 v		
 *	  1(b)				5(b)
 *	 	 \			 	/	\
@@ -276,7 +276,7 @@ void test_addRedBlackTree_throw_exception_with_same_value_input(void){
 
 /**
 *		 root				root
-*		  |		 add 10		 |
+*		  |		 add 1		 |
 *		  v		 ---->		 v		
 *		 10(b)				10(b)
 *		 /	 \			 	/	\
@@ -306,7 +306,7 @@ void test_addRedBlackTree_4_degree_add_1_to_tree_with_root_10(void){
 *		_addRedBlackTree(does not change root color)
 *
 *		 root				root
-*		  |		 add 10		 |
+*		  |		 add 1		 |
 *		  v		 ---->		 v		
 *		 10(b)				10(r)
 *		 /	 \			 	/	\

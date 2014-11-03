@@ -52,8 +52,50 @@ void _addRedBlackTree(Node **rootPtr, Node *newNode){
 	checkViolationAndRotate(rootPtr);
 }
 
+Node *delRedBlackTree(Node **rootPtr, Node *newNode){
+	Node *retNode = _delRedBlackTree(rootPtr, newNode);
+	
+	if(*rootPtr != NULL)
+		(*rootPtr)->color = 'b';
+		
+	return retNode;
+}
+
+Node *_delRedBlackTree(Node **rootPtr, Node *newNode){
+
+	Node *retNode;
+	
+	if(*rootPtr != NULL && (*rootPtr)->left != NULL && (*rootPtr)->right != NULL &&
+		(*rootPtr)->left->color == 'b' && (*rootPtr)->right->color == 'b'){
+		
+		(*rootPtr)->color = 'b';
+		(*rootPtr)->left->color = 'r';
+		(*rootPtr)->right->color = 'r';
+	}
+	
+	if(*rootPtr == NULL || newNode == NULL)
+		Throw(ERROR_NO_NODE);
+		
+	else if((*rootPtr)->data == newNode->data){
+		 retNode = *rootPtr;
+		*rootPtr = NULL;
+		return retNode;
+	}
+	
+	else if(newNode->data < (*rootPtr)->data)
+		retNode = _delRedBlackTree(&((*rootPtr)->left), newNode);
+	
+	else if(newNode->data > (*rootPtr)->data)
+		retNode = _delRedBlackTree(&((*rootPtr)->right), newNode);
+	
+	checkViolationAndRotate(rootPtr);
+	return retNode;
+
+}
+
 void checkViolationAndRotate(Node **rootPtr){
 
+		
 	if((*rootPtr)->left != NULL && (*rootPtr)->left->color == 'r'){
 		if((*rootPtr)->left->left != NULL || (*rootPtr)->left->right != NULL){
 			if((*rootPtr)->left->left != NULL &&(*rootPtr)->left->left->color == 'r')
@@ -66,7 +108,6 @@ void checkViolationAndRotate(Node **rootPtr){
 				return;
 				
 			(*rootPtr)->right->color = 'r';
-			(*rootPtr)->color = 'b';
 		}
 	}
 	
@@ -82,7 +123,6 @@ void checkViolationAndRotate(Node **rootPtr){
 				return;
 				
 			(*rootPtr)->left->color = 'r';
-			(*rootPtr)->color = 'b';
 		}
 	}
 }
