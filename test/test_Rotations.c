@@ -447,3 +447,4 @@ void test_rightLeftRotate_should_rotate_6_node_2nd_situation(void){
 	TEST_ASSERT_EQUAL_PTR(node25.right, NULL);
 	TEST_ASSERT_EQUAL_PTR(root, &node10);
 }
+

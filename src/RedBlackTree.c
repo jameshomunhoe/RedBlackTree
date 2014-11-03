@@ -16,7 +16,6 @@
 *	*nodePtr=&node5;
 */
 
-
 void addRedBlackTree(Node **rootPtr, Node *newNode){
 	
 	_addRedBlackTree(rootPtr, newNode);
@@ -25,6 +24,15 @@ void addRedBlackTree(Node **rootPtr, Node *newNode){
 }
 
 void _addRedBlackTree(Node **rootPtr, Node *newNode){
+	
+	
+	if(*rootPtr != NULL && (*rootPtr)->left != NULL && (*rootPtr)->right != NULL &&
+		(*rootPtr)->left->color == 'r' && (*rootPtr)->right->color == 'r'){
+		
+		(*rootPtr)->color = 'r';
+		(*rootPtr)->left->color = 'b';
+		(*rootPtr)->right->color = 'b';
+	}
 	
 	if(*rootPtr == NULL){
 		*rootPtr = newNode;
@@ -41,16 +49,24 @@ void _addRedBlackTree(Node **rootPtr, Node *newNode){
 	else
 		Throw(ERROR_EQUIVALENT_NODE);
 		
+	checkViolationAndRotate(rootPtr);
+}
+
+void checkViolationAndRotate(Node **rootPtr){
+
 	if((*rootPtr)->left != NULL && (*rootPtr)->left->color == 'r'){
 		if((*rootPtr)->left->left != NULL || (*rootPtr)->left->right != NULL){
 			if((*rootPtr)->left->left != NULL &&(*rootPtr)->left->left->color == 'r')
 				rightRotate(rootPtr);
 		
-			else if((*rootPtr)->left->right != NULL && (*rootPtr)->left->color == 'r')
+			else if((*rootPtr)->left->right != NULL && (*rootPtr)->left->right->color == 'r')
 				leftRightRotate(rootPtr);
-
-				(*rootPtr)->right->color = 'r';
-				(*rootPtr)->color = 'b';
+				
+			else 
+				return;
+				
+			(*rootPtr)->right->color = 'r';
+			(*rootPtr)->color = 'b';
 		}
 	}
 	
@@ -61,12 +77,12 @@ void _addRedBlackTree(Node **rootPtr, Node *newNode){
 				
 			else if((*rootPtr)->right->left != NULL &&(*rootPtr)->right->left->color == 'r')
 				rightLeftRotate(rootPtr);
+			
+			else 
+				return;
 				
-				(*rootPtr)->left->color = 'r';
-				(*rootPtr)->color = 'b';
+			(*rootPtr)->left->color = 'r';
+			(*rootPtr)->color = 'b';
 		}
 	}
-			// printf(" niaseng %c\n", (*rootPtr)->right->color);
-		
-
 }
