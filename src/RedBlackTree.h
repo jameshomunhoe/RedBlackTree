@@ -9,7 +9,13 @@ Node *delRedBlackTree(Node **rootPtr, Node *newNode);
 Node *_delRedBlackTree(Node **rootPtr, Node *newNode);
 
 void removeLeftCaseOne(Node **rootPtr);
+void removeRightCaseOne(Node **rootPtr);
+
 void removeLeftCaseTwo(Node **rootPtr);
+void removeRightCaseTwo(Node **rootPtr);
+
+void removeLeftCaseThree(Node **rootPtr);
+void removeRightCaseThree(Node **rootPtr);
 
 int isRed(Node **Node);
 int isBlack(Node **Node);
