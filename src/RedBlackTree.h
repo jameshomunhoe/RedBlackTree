@@ -8,6 +8,7 @@ void _addRedBlackTree(Node **rootPtr, Node *newNode);
 Node *delRedBlackTree(Node **rootPtr, Node *newNode);
 Node *_delRedBlackTree(Node **rootPtr, Node *newNode);
 
+void restructureTree(Node **rootPtr, Node *removedNode);
 void removeLeftCaseOne(Node **rootPtr);
 void removeRightCaseOne(Node **rootPtr);
 

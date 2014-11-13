@@ -8,11 +8,12 @@
 #include "ErrorCode.h"
 #include "CException.h"
 
-Node node1, node5, node10, node15, node20, node25, node30, node35, node40, node45;
+Node node1, node2, node5, node10, node15, node20, node25, node30, node35, node40, node45;
 
 
 void setUp(void){
 	resetNode(&node1, 1);
+	resetNode(&node2, 2);
 	resetNode(&node5, 5);
 	resetNode(&node10, 10);
 	resetNode(&node15, 15);
@@ -749,19 +750,17 @@ void test_removeNextLargerSuccessor_remove_5_and_do_nothing(void){
 */
 void test_removeNextLargerSuccessor_case_1(void){
 
-	setNode(&node1, NULL, NULL, 'r');
 	setNode(&node10, NULL, NULL, 'r');
-	setNode(&node5, &node1, &node10, 'b');
+	setNode(&node5, NULL, &node10, 'b');
 
 	Node *root = &node5;
 	Node *retNode;
 
 	retNode = removeNextLargerSuccessor(&root);
 	
-	TEST_ASSERT_EQUAL_PTR(&node5, root);
-	TEST_ASSERT_EQUAL_PTR(&node1, retNode);
-	TEST_ASSERT_EQUAL_NODE(NULL, &node10, 'b', root);
-	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node10);
+	TEST_ASSERT_EQUAL_PTR(&node10, root);
+	TEST_ASSERT_EQUAL_PTR(&node5, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', root);
 
 }
 
@@ -769,24 +768,20 @@ void test_removeNextLargerSuccessor_case_1(void){
 *	 	 	root					root
 *	  	 	 |		 successor		  |
 *	  	 	 v		 	1			  v
-*	 		5(b)	 -------->		 5(b)
-*	   		/							 
+*	   		/		-------->		//	 
 *		  1(b)   					 
 */
 void test_removeNextLargerSuccessor_case_2(void){
 
 	setNode(&node1, NULL, NULL, 'b');
-	setNode(&node5, &node1, NULL, 'b');
 
-	Node *root = &node5;
-	Node *retNode;
+	Node *retNode,*parentNode = &node1;
 
-	retNode = removeNextLargerSuccessor(&root);
+	retNode = removeNextLargerSuccessor(&parentNode);
 	
-	TEST_ASSERT_EQUAL_PTR(&node5, root);
 	TEST_ASSERT_EQUAL_PTR(&node1, retNode);
-	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', root);
-	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', retNode);
+	TEST_ASSERT_NULL(parentNode);
+	TEST_ASSERT_EQUAL(1, isDoubleBlack(parentNode, retNode));
 
 }
 
@@ -794,23 +789,196 @@ void test_removeNextLargerSuccessor_case_2(void){
 *	 	 	root					root
 *	  	 	 |		 successor		  |
 *	  	 	 v		 	1			  v
-*	 		5(b)	 -------->		 5(b)
-*	   		/							 
+*	   		/		-------->		 /
 *		  1(r)   					 
 */
 void test_removeNextLargerSuccessor_case_3(void){
 
 	setNode(&node1, NULL, NULL, 'r');
-	setNode(&node5, &node1, NULL, 'b');
 
-	Node *root = &node5;
-	Node *retNode;
+	Node *retNode,*parentNode = &node1;
 
-	retNode = removeNextLargerSuccessor(&root);
+	retNode = removeNextLargerSuccessor(&parentNode);
 	
-	TEST_ASSERT_EQUAL_PTR(&node5, root);
 	TEST_ASSERT_EQUAL_PTR(&node1, retNode);
-	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', root);
-	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', retNode);
+	TEST_ASSERT_NULL(parentNode);
+	TEST_ASSERT_EQUAL(1, isBlack(parentNode));
 
+}
+
+/**
+*	 	 root						root
+*	  	 |		successor 5			 |
+*	  	 v		 ---->			 	 v
+*	 	15(b)					 	15(b)
+*	   /	\			  	 			  \
+* 	5(r)	 25(r)		 			     25(r)
+*/
+void test_removeNextLargerSuccessor_given_5r_15b_25r_then_remove_5(){
+
+	setNode(&node5, NULL, NULL, 'r');
+	setNode(&node25, NULL, NULL, 'r');
+	setNode(&node15, &node5, &node25, 'b');
+	
+	Node *retNode,*rootNode = &node15;
+	retNode = removeNextLargerSuccessor(&rootNode);
+	
+	TEST_ASSERT_EQUAL_PTR(&node15, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node5, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, &node25, 'b', &node15);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node25);
+	
+}
+
+/**
+*	 	 root						root
+*	  	 |		successor 1			 |
+*	  	 v		 ---->			 	 v
+*	 	15(b)					 	15(b)
+*	   /	\			  	 		/	  \
+* 	5(b)	 25(b)		 		5(b)	   25(b)
+*	/	 	  /	  						  	/
+* 1(r) 		 20(r)   		 		 	20(r) 
+*/
+void test_removeNextLargerSuccessor_given_1r_5b_15b_20r_25b_then_remove_1(){
+	setNode(&node1, NULL, NULL, 'r');
+	setNode(&node20, NULL, NULL, 'r');
+	setNode(&node5, &node1, NULL, 'b');
+	setNode(&node25, &node20, NULL, 'b');
+	setNode(&node15, &node5, &node25, 'b');
+	
+	Node *retNode,*rootNode = &node15;
+	retNode = removeNextLargerSuccessor(&rootNode);
+	
+	TEST_ASSERT_EQUAL_PTR(&node15, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node1, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node5);
+	TEST_ASSERT_EQUAL_NODE(&node5, &node25, 'b', &node15);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node20);
+	TEST_ASSERT_EQUAL_NODE(&node20, NULL, 'b', &node25);
+
+}
+
+/**
+*	 	 root						root
+*	  	 |		successor 1			 |
+*	  	 v		 ---->			 	 v
+*	 	15(b)					 	15(d)
+*	   /	\			  	 		/	  \
+* 	5(b)	 25(b)		 		5(b)	   25(r)
+*	/ \	 	  /	  \					\	  	/	\
+* 1(b) 10(b) 20(b) 30(b)  		 	10(r) 20(b)  30(b)  
+*/
+void test_removeNextLargerSuccessor_given_1b_5b_10b_15b_20b_25b_30b_then_remove_1(){
+	setNode(&node1, NULL, NULL, 'b');
+	setNode(&node10, NULL, NULL, 'b');
+	setNode(&node20, NULL, NULL, 'b');
+	setNode(&node30, NULL, NULL, 'b');
+	setNode(&node5, &node1, &node10, 'b');
+	setNode(&node25, &node20, &node30, 'b');
+	setNode(&node15, &node5, &node25, 'b');
+	
+	Node *retNode,*rootNode = &node15;
+	retNode = removeNextLargerSuccessor(&rootNode);
+	
+	TEST_ASSERT_EQUAL_PTR(&node15, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node1, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, &node10, 'b', &node5);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node10);
+	TEST_ASSERT_EQUAL_NODE(&node5, &node25, 'd', &node15);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node20);
+	TEST_ASSERT_EQUAL_NODE(&node20, &node30, 'r', &node25);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node30);
+
+}
+
+/**
+*	 	 root						root
+*	  	 |		successor 1			 |
+*	  	 v		 ---->			 	 v
+*	 	15(b)					 	15(b)
+*	   /	\			  	 		/	  \
+* 	5(b)	 25(b)		 		5(b)	   25(b)
+*	/ \	 	  /	  \				/	\	  	/	\
+* 1(b) 10(b) 20(b) 30(b)  	2(b) 	10(b) 20(b)  30(b)  
+*	\
+*	2(r)
+*/
+void test_removeNextLargerSuccessor_given_1b_2r_5b_10b_15b_20b_25b_30b_then_remove_1(){
+	setNode(&node2, NULL, NULL, 'r');
+	setNode(&node1, NULL, &node2, 'b');
+	setNode(&node10, NULL, NULL, 'b');
+	setNode(&node20, NULL, NULL, 'b');
+	setNode(&node30, NULL, NULL, 'b');
+	setNode(&node5, &node1, &node10, 'b');
+	setNode(&node25, &node20, &node30, 'b');
+	setNode(&node15, &node5, &node25, 'b');
+	
+	Node *retNode,*rootNode = &node15;
+	retNode = removeNextLargerSuccessor(&rootNode);
+	
+	TEST_ASSERT_EQUAL_PTR(&node15, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node1, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node2);
+	TEST_ASSERT_EQUAL_NODE(&node2, &node10, 'b', &node5);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node10);
+	TEST_ASSERT_EQUAL_NODE(&node5, &node25, 'b', &node15);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node20);
+	TEST_ASSERT_EQUAL_NODE(&node20, &node30, 'b', &node25);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node30);
+
+}
+
+/**
+*	 	 root						root
+*	  	 |		remove 15			 |
+*	  	 v		 ---->			 	 v
+*	 	15(b)					 	25(b) 
+*	   /	\			  	 		/
+*	  5(r)	25(r)				 5(r)
+*/
+void test_delRedBlackTree_given_5r_15b_25r_then_remove_15(){
+
+	setNode(&node5, NULL, NULL, 'r');
+	setNode(&node25, NULL, NULL, 'r');
+	setNode(&node15, &node5, &node25, 'b');
+	
+	Node *retNode,*rootNode = &node15;
+	retNode = _delRedBlackTree(&rootNode,&node15);
+	
+	TEST_ASSERT_EQUAL_PTR(&node25, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node15, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node5);
+	TEST_ASSERT_EQUAL_NODE(&node5, NULL, 'b', &node25);
+	
+}
+
+/**
+*	 	root						root
+*	  	 |		remove 5			 |
+*	  	 v		 ---->			 	 v
+*	 	15(b)					 	15(b) 
+*	   /	\			  	 		/	\
+*	  5(b)	25(b)				 10(b)	25(b)
+*	  /  \						 /
+*	1(r)  10(r)				  1(r)
+*/
+void test_delRedBlackTree_given_1r_5b_15r_20b_25b_then_remove_5(){
+
+	setNode(&node1, NULL, NULL, 'r');
+	setNode(&node10, NULL, NULL, 'r');
+	setNode(&node5, &node1, &node10, 'b');
+	setNode(&node25, NULL, NULL, 'b');
+	setNode(&node15, &node5, &node25, 'b');
+	
+	Node *retNode,*rootNode = &node15;
+	retNode = _delRedBlackTree(&rootNode,&node5);
+	
+	TEST_ASSERT_EQUAL_PTR(&node15, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node5, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node1);
+	TEST_ASSERT_EQUAL_NODE(&node1, NULL, 'b', &node10);
+	TEST_ASSERT_EQUAL_NODE(&node10, &node25, 'b', &node15);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node25);
+	
 }
