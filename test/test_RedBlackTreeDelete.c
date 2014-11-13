@@ -718,3 +718,99 @@ void test_delRedBlackTree_case_3b_removeRight_25(void){
 	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node20);
 
 }
+
+/**
+*	 	 	root					root
+*	  	 	 |		 successor		  |
+*	  	 	 v		 	5			  v
+*	 		5(b)	 -------->		  -
+
+*/
+void test_removeNextLargerSuccessor_remove_5_and_do_nothing(void){
+
+	setNode(&node5, NULL, NULL, 'b');
+
+	Node *root = &node5;
+	Node *retNode;
+
+	retNode = removeNextLargerSuccessor(&root);
+	TEST_ASSERT_EQUAL_PTR(NULL, root);
+	TEST_ASSERT_EQUAL_PTR(&node5, retNode);
+
+}
+
+/**
+*	 	 	root					root
+*	  	 	 |		 successor		  |
+*	  	 	 v		 	5			  v
+*	 		5(b)	 -------->		 10(b)
+*	   			\
+*		       10(r)
+*/
+void test_removeNextLargerSuccessor_case_1(void){
+
+	setNode(&node1, NULL, NULL, 'r');
+	setNode(&node10, NULL, NULL, 'r');
+	setNode(&node5, &node1, &node10, 'b');
+
+	Node *root = &node5;
+	Node *retNode;
+
+	retNode = removeNextLargerSuccessor(&root);
+	
+	TEST_ASSERT_EQUAL_PTR(&node5, root);
+	TEST_ASSERT_EQUAL_PTR(&node1, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, &node10, 'b', root);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node10);
+
+}
+
+/**
+*	 	 	root					root
+*	  	 	 |		 successor		  |
+*	  	 	 v		 	1			  v
+*	 		5(b)	 -------->		 5(b)
+*	   		/							 
+*		  1(b)   					 
+*/
+void test_removeNextLargerSuccessor_case_2(void){
+
+	setNode(&node1, NULL, NULL, 'b');
+	setNode(&node5, &node1, NULL, 'b');
+
+	Node *root = &node5;
+	Node *retNode;
+
+	retNode = removeNextLargerSuccessor(&root);
+	
+	TEST_ASSERT_EQUAL_PTR(&node5, root);
+	TEST_ASSERT_EQUAL_PTR(&node1, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', root);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', retNode);
+
+}
+
+/**
+*	 	 	root					root
+*	  	 	 |		 successor		  |
+*	  	 	 v		 	1			  v
+*	 		5(b)	 -------->		 5(b)
+*	   		/							 
+*		  1(r)   					 
+*/
+void test_removeNextLargerSuccessor_case_3(void){
+
+	setNode(&node1, NULL, NULL, 'r');
+	setNode(&node5, &node1, NULL, 'b');
+
+	Node *root = &node5;
+	Node *retNode;
+
+	retNode = removeNextLargerSuccessor(&root);
+	
+	TEST_ASSERT_EQUAL_PTR(&node5, root);
+	TEST_ASSERT_EQUAL_PTR(&node1, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', root);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', retNode);
+
+}

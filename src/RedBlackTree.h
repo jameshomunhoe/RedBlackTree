@@ -11,15 +11,18 @@ Node *_delRedBlackTree(Node **rootPtr, Node *newNode);
 void removeLeftCaseOne(Node **rootPtr);
 void removeRightCaseOne(Node **rootPtr);
 
-void removeLeftCaseTwo(Node **rootPtr);
-void removeRightCaseTwo(Node **rootPtr);
+void removeLeftCaseTwo(Node **rootPtr, Node *removedNode);
+void removeRightCaseTwo(Node **rootPtr, Node *removedNode);
 
-void removeLeftCaseThree(Node **rootPtr);
-void removeRightCaseThree(Node **rootPtr);
+void removeLeftCaseThree(Node **rootPtr, Node *removedNode);
+void removeRightCaseThree(Node **rootPtr, Node *removedNode);
 
-int isRed(Node **Node);
-int isBlack(Node **Node);
-int isDoubleBlack(Node **Node);
+Node *removeNextLargerSuccessor(Node **rootPtr);
+
+
+int isRed(Node *node);
+int isBlack(Node *node);
+int isDoubleBlack(Node *node, Node *removedNode);
 
 
 //To check violation and rotate if needed
