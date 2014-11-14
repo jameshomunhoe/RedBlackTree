@@ -76,22 +76,27 @@ Node *_delRedBlackTree(Node **rootPtr, Node *newNode){
 		Throw(ERROR_NO_NODE);
 		
 	else if((*rootPtr)->data == newNode->data){
-		Node *temporaryLeftChild = leftChild;
-		Node *temporaryRightChild = rightChild;
+		Node *temporaryLeftChild = NULL;
+		Node *temporaryRightChild = NULL;
 		retNode = *rootPtr;
-		char successorNodeColor = (*rootPtr)->color;
+		
+		if(leftChild)
+			temporaryLeftChild = leftChild;
+		
+		if(rightChild)
+			temporaryRightChild = rightChild;
+		
 		
 		if(rightChild){
 			successorNode = removeNextLargerSuccessor(&rightChild);
+			successorNode->color = (*rootPtr)->color;
 			*rootPtr = successorNode;
-			(*rootPtr)->color = successorNodeColor;
 			leftChild = temporaryLeftChild;
-			// rightChild = temporaryRightChild;
 		}
 		
 		else if(leftChild){
+			leftChild->color = (*rootPtr)->color;
 			(*rootPtr) = leftChild;
-			(*rootPtr)->color = successorNodeColor;
 		}
 			
 		else
