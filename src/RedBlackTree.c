@@ -78,13 +78,16 @@ Node *_delRedBlackTree(Node **rootPtr, Node *newNode){
 	else if((*rootPtr)->data == newNode->data){
 		Node *temporaryLeftChild = NULL;
 		Node *temporaryRightChild = NULL;
-		Node temporaryNode;
+		
+		//for retaining the color instead of being overwritten
+		Node temporarySuccessorNode; 
+		
 		char rootColor;
 		retNode = *rootPtr;
 		
 		if(rightChild){
 			successorNode = removeNextLargerSuccessor(&rightChild);
-			temporaryNode = *successorNode;
+			temporarySuccessorNode = *successorNode;
 			temporaryLeftChild = leftChild;
 			temporaryRightChild = rightChild;
 			
@@ -94,14 +97,8 @@ Node *_delRedBlackTree(Node **rootPtr, Node *newNode){
 			
 			leftChild = temporaryLeftChild;
 			rightChild = temporaryRightChild;
-			
-			// printf("successorNode data : %d\n",successorNode->data);
-			// printf("successorNode color : %c\n",temporaryNode.color);
-			// printf("leftChild color before restructure : %c\n",leftChild->color);
-			// printf("rightChild color before restructure : %c\n",rightChild->color);
-			// printf("%c\n",(*rootPtr)->color);
-			restructureTree(rootPtr, &temporaryNode);
-			
+
+			restructureTree(rootPtr, &temporarySuccessorNode);			
 		}
 		
 		else if(leftChild){
