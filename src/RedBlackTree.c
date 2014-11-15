@@ -78,12 +78,13 @@ Node *_delRedBlackTree(Node **rootPtr, Node *newNode){
 	else if((*rootPtr)->data == newNode->data){
 		Node *temporaryLeftChild = NULL;
 		Node *temporaryRightChild = NULL;
+		Node temporaryNode;
 		char rootColor;
 		retNode = *rootPtr;
 		
 		if(rightChild){
 			successorNode = removeNextLargerSuccessor(&rightChild);
-			
+			temporaryNode = *successorNode;
 			temporaryLeftChild = leftChild;
 			temporaryRightChild = rightChild;
 			
@@ -93,6 +94,13 @@ Node *_delRedBlackTree(Node **rootPtr, Node *newNode){
 			
 			leftChild = temporaryLeftChild;
 			rightChild = temporaryRightChild;
+			
+			// printf("successorNode data : %d\n",successorNode->data);
+			// printf("successorNode color : %c\n",temporaryNode.color);
+			// printf("leftChild color before restructure : %c\n",leftChild->color);
+			// printf("rightChild color before restructure : %c\n",rightChild->color);
+			// printf("%c\n",(*rootPtr)->color);
+			restructureTree(rootPtr, &temporaryNode);
 			
 		}
 		
@@ -105,7 +113,6 @@ Node *_delRedBlackTree(Node **rootPtr, Node *newNode){
 		else
 		*rootPtr = NULL;
 
-		restructureTree(rootPtr, successorNode);
 		return retNode;
 	}
 	
@@ -120,8 +127,10 @@ Node *_delRedBlackTree(Node **rootPtr, Node *newNode){
 	return retNode;
 }
 void restructureTree(Node **rootPtr, Node *removedNode){		
+		("hi");
 
 	if(isDoubleBlack(leftChild, removedNode)){
+		("hi left");
 		if(isBlack(rightChild)){
 			if(isRed(rightLeftChild) || isRed(rightRightChild))
 				removeLeftCaseOne(rootPtr);
@@ -132,6 +141,7 @@ void restructureTree(Node **rootPtr, Node *removedNode){
 			removeLeftCaseThree(rootPtr, removedNode);
 	}
 	else if(isDoubleBlack(rightChild, removedNode)){
+		("hi right");
 		if(isBlack(leftChild)){
 			if(isRed(leftRightChild) || isRed(leftLeftChild))
 				removeRightCaseOne(rootPtr);
@@ -142,6 +152,31 @@ void restructureTree(Node **rootPtr, Node *removedNode){
 			removeRightCaseThree(rootPtr, removedNode);
 	}
 
+
+}
+
+Node *removeNextLargerSuccessor(Node **rootPtr){
+	Node *removedNode;
+
+	if(leftChild){
+		removedNode = removeNextLargerSuccessor(&leftChild);
+		restructureTree(rootPtr, removedNode);
+	}
+	
+	else if(!rightChild){
+		removedNode = *rootPtr;
+		*rootPtr = NULL;
+		return removedNode;
+	}
+	
+	else if(rightChild){
+		removedNode = *rootPtr;
+		*rootPtr = rightChild;
+		(*rootPtr)->color = 'b';
+		return removedNode;
+	}
+	
+	return removedNode;
 
 }
 
@@ -284,30 +319,6 @@ int isDoubleBlack(Node *node, Node *removedNode){
 	
 }
 
-Node *removeNextLargerSuccessor(Node **rootPtr){
-	Node *removedNode;
-
-	if(leftChild){
-		removedNode = removeNextLargerSuccessor(&leftChild);
-		restructureTree(rootPtr, removedNode);
-	}
-	
-	else if(!rightChild){
-		removedNode = *rootPtr;
-		*rootPtr = NULL;
-		return removedNode;
-	}
-	
-	else if(rightChild){
-		removedNode = *rootPtr;
-		*rootPtr = rightChild;
-		(*rootPtr)->color = 'b';
-		return removedNode;
-	}
-	
-	return removedNode;
-
-}
 
 
 
