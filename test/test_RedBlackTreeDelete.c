@@ -1019,7 +1019,7 @@ void test_delRedBlackTree_given_1r_5b_15r_20b_25b_then_remove_5(){
 *		/
 *	   10(r)
 */
-void test_delRedBlackTree_remove_left_parent_without_case_involved(){
+void test_delRedBlackTree_remove_5b_left_parent_without_case_involved(){
 
 	setNode(&node10, NULL, NULL, 'r');
 	setNode(&node1, NULL, NULL, 'b');
@@ -1042,6 +1042,85 @@ void test_delRedBlackTree_remove_left_parent_without_case_involved(){
 	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node30);
 	
 }
+/**
+*	Testing : remove left parent with case 1a
+*
+*	 		root						root
+*	  	 	|		remove 5			 |
+*	  	 	v		 ---->			 	 v
+*	 	 	20(b)					 	20(b) 
+*	   		/	  \			  	 		/	\
+*	 	5(b)	   35(b)			2(b)	  35(b)
+*		/  \		/	\			/ \		  /	 \
+*	2(b)  15(b)  30(b)	40(b)	1(b)  15(b)	30(b) 40(b) 
+*	/		  
+* 1(r)		
+*/
+void test_delRedBlackTree_remove_5b_left_parent_with_case_1a(){
+
+	setNode(&node1, NULL, NULL, 'r');
+	setNode(&node2, &node1, NULL, 'b');
+	setNode(&node15, NULL, NULL, 'b');
+	setNode(&node30, NULL, NULL, 'b');
+	setNode(&node40, NULL, NULL, 'b');
+	setNode(&node5, &node2, &node15, 'b');
+	setNode(&node35, &node30, &node40, 'b');
+	setNode(&node20, &node5, &node35, 'b');
+	
+	Node *retNode,*rootNode = &node20;
+	retNode = _delRedBlackTree(&rootNode,&node5);
+	
+	TEST_ASSERT_EQUAL_PTR(&node20, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node5, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node1);
+	TEST_ASSERT_EQUAL_NODE(&node1, &node15, 'b', &node2);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node15);
+	TEST_ASSERT_EQUAL_NODE(&node2, &node35, 'b', &node20);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node30);
+	TEST_ASSERT_EQUAL_NODE(&node30, &node40, 'b', &node35);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node40);
+	
+}
+
+/**
+*	Testing : remove left parent with case 1b
+*
+*	 		root						root
+*	  	 	|		remove 5			 |
+*	  	 	v		 ---->			 	 v
+*	 	 	20(b)					 	20(b) 
+*	   		/	  \			  	 		/	\
+*	 	5(b)	   35(b)			2(b)	  35(b)
+*		/  \		/	\			/ \		  /	 \
+*	1(b)  15(b)  30(b)	40(b)	1(b)  15(b)	30(b) 40(b) 
+*		\	  
+* 		2(r)		
+*/
+void test_delRedBlackTree_remove_5b_left_parent_with_case_1b(){
+
+	setNode(&node2, NULL, NULL, 'r');
+	setNode(&node1, NULL, &node2, 'b');
+	setNode(&node15, NULL, NULL, 'b');
+	setNode(&node30, NULL, NULL, 'b');
+	setNode(&node40, NULL, NULL, 'b');
+	setNode(&node5, &node1, &node15, 'b');
+	setNode(&node35, &node30, &node40, 'b');
+	setNode(&node20, &node5, &node35, 'b');
+	
+	Node *retNode,*rootNode = &node20;
+	retNode = _delRedBlackTree(&rootNode,&node5);
+	
+	TEST_ASSERT_EQUAL_PTR(&node20, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node5, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node1);
+	TEST_ASSERT_EQUAL_NODE(&node1, &node15, 'b', &node2);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node15);
+	TEST_ASSERT_EQUAL_NODE(&node2, &node35, 'b', &node20);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node30);
+	TEST_ASSERT_EQUAL_NODE(&node30, &node40, 'b', &node35);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node40);
+	
+}
 
 /**
 *	Testing : remove left parent with case 2a and 2b
@@ -1055,7 +1134,7 @@ void test_delRedBlackTree_remove_left_parent_without_case_involved(){
 *	/  \		/	\			/ 		  /	 	\
 *1(b)  15(b)  25(b)	35(b)	1(r)  		25(b)  35(b)
 */
-void test_delRedBlackTree_remove_left_parent_with_case_2a_and_2b(){
+void test_delRedBlackTree_remove_5b_left_parent_with_case_2a_and_2b(){
 
 	setNode(&node1, NULL, NULL, 'b');
 	setNode(&node15, NULL, NULL, 'b');
@@ -1079,8 +1158,6 @@ void test_delRedBlackTree_remove_left_parent_with_case_2a_and_2b(){
 	
 }
 
-
-
 /**
 *	Testing : remove right parent without case involve
 *
@@ -1095,7 +1172,7 @@ void test_delRedBlackTree_remove_left_parent_with_case_2a_and_2b(){
 *						\
 *	  	`				40(r)
 */
-void test_delRedBlackTree_remove_right_parent_without_case_involved(){
+void test_delRedBlackTree_remove_25b_right_parent_without_case_involved(){
 
 	setNode(&node40, NULL, NULL, 'r');
 	setNode(&node1, NULL, NULL, 'b');
@@ -1121,10 +1198,90 @@ void test_delRedBlackTree_remove_right_parent_without_case_involved(){
 }
 
 /**
+*	Testing : remove right parent with case 1a
+*
+*	 	root						root
+*	  	 |		remove 35			 |
+*	  	 v		 ---->			 	 v
+*	 	 20(b)					 	20(b) 
+*	   /	  \			  	 		/	\
+*	 5(b)	   35(b)			5(b)	  30(b)
+*	/  \		/	\			/ \		  /	 \
+*1(b)  15(b)  30(b)	40(b)	1(b)  15(b)	25(b) 40(b) 
+*			  /
+*			25(r)
+*/
+void test_delRedBlackTree_remove_35b_right_parent_with_case_1a(){
+
+	setNode(&node25, NULL, NULL, 'r');
+	setNode(&node1, NULL, NULL, 'b');
+	setNode(&node15, NULL, NULL, 'b');
+	setNode(&node30, &node25, NULL, 'b');
+	setNode(&node40, NULL, NULL, 'b');
+	setNode(&node5, &node1, &node15, 'b');
+	setNode(&node35, &node30, &node40, 'b');
+	setNode(&node20, &node5, &node35, 'b');
+	
+	Node *retNode,*rootNode = &node20;
+	retNode = _delRedBlackTree(&rootNode,&node35);
+	
+	TEST_ASSERT_EQUAL_PTR(&node20, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node35, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node1);
+	TEST_ASSERT_EQUAL_NODE(&node1, &node15, 'b', &node5);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node15);
+	TEST_ASSERT_EQUAL_NODE(&node5, &node30, 'b', &node20);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node25);
+	TEST_ASSERT_EQUAL_NODE(&node25, &node40, 'b', &node30);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node40);
+	
+}
+
+/**
+*	Testing : remove right parent with case 1b
+*
+*	 	root						root
+*	  	 |		remove 35			 |
+*	  	 v		 ---->			 	 v
+*	 	 20(b)					 	20(b) 
+*	   /	  \			  	 		/	\
+*	 5(b)	   35(b)			5(b)	  30(b)
+*	/  \		/	\			/ \		  /	 \
+*1(b)  15(b)  25(b)	40(b)	1(b)  15(b)	25(b) 40(b) 
+*				\
+*				30(r)
+*/
+void test_delRedBlackTree_remove_35b_right_parent_with_case_1b(){
+
+	setNode(&node30, NULL, NULL, 'r');
+	setNode(&node1, NULL, NULL, 'b');
+	setNode(&node15, NULL, NULL, 'b');
+	setNode(&node25, NULL, &node30, 'b');
+	setNode(&node40, NULL, NULL, 'b');
+	setNode(&node5, &node1, &node15, 'b');
+	setNode(&node35, &node25, &node40, 'b');
+	setNode(&node20, &node5, &node35, 'b');
+	
+	Node *retNode,*rootNode = &node20;
+	retNode = _delRedBlackTree(&rootNode,&node35);
+	
+	TEST_ASSERT_EQUAL_PTR(&node20, rootNode);
+	TEST_ASSERT_EQUAL_PTR(&node35, retNode);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node1);
+	TEST_ASSERT_EQUAL_NODE(&node1, &node15, 'b', &node5);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node15);
+	TEST_ASSERT_EQUAL_NODE(&node5, &node30, 'b', &node20);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node25);
+	TEST_ASSERT_EQUAL_NODE(&node25, &node40, 'b', &node30);
+	TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node40);
+	
+}
+
+/**
 *	Testing : remove right parent with case 2a and 2b
 *
 *	 	root						root
-*	  	 |		remove 25			 |
+*	  	 |		remove 30			 |
 *	  	 v		 ---->			 	 v
 *	 	 20(r)					 	20(b) 
 *	   /	  \			  	 		/	\
@@ -1132,7 +1289,7 @@ void test_delRedBlackTree_remove_right_parent_without_case_involved(){
 *	/  \		/	\			/ \		  /	 
 *1(b)  15(b)  25(b)	35(b)	1(b)  15(b)	25(r)  
 */
-void test_delRedBlackTree_remove_right_parent_with_case_2a_and_2b(){
+void test_delRedBlackTree_remove_30b_right_parent_with_case_2a_and_2b(){
 
 	setNode(&node1, NULL, NULL, 'b');
 	setNode(&node15, NULL, NULL, 'b');
