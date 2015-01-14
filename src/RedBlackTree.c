@@ -367,6 +367,7 @@ void checkViolationAndRotate(Node **rootPtr){
 				return;
 				
 			(*rootPtr)->right->color = 'r';
+      (*rootPtr)->color = 'b';
 		}
 	}
 	
@@ -382,6 +383,7 @@ void checkViolationAndRotate(Node **rootPtr){
 				return;
 				
 			(*rootPtr)->left->color = 'r';
+			(*rootPtr)->color = 'b';
 		}
 	}
 }
