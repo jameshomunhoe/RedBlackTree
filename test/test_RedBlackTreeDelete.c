@@ -28,7 +28,7 @@ void tearDown(void){}
 
 
 /**
-*	 root				root
+*	 root			    	root
 *	  |		del 10		 |
 *	  v		 ---->		 v
 *	 10(b)				 NULL
@@ -47,7 +47,7 @@ void test_delRedBlackTree_delete_10_from_2_degree_tree(void){
 }
 
 /**
-*	 root				root
+*	 root			    	root
 *	  |		del 15		 |
 *	  v		 ---->		 v
 *	 10(b)				 10(b)
@@ -70,11 +70,11 @@ void test_delRedBlackTree_delete_15_from_3_degree_tree(void){
 }
 
 /**
-*	 root				root
-*	  |		del 5		 |
-*	  v		 ---->		 v
-*	 10(b)				 10(b)
-*	/	\					\
+*	 root				      root
+*	  |		del 5		     |
+*	  v		 ---->	  	 v
+*	 10(b)				   10(b)
+*	  /	\				    	\
 *  5(r)	15(r)				15(r)
 */
 void test_delRedBlackTree_delete_5_from_4_degree_tree(void){
@@ -95,11 +95,11 @@ void test_delRedBlackTree_delete_5_from_4_degree_tree(void){
 }
 
 /**
-*	 root				root
-*	  |		del 5		 |
+*	 root				    root
+*	  |		del 5		   |
 *	  v		 ---->		 v
 *	 10(b)				 10(b)
-*	/	\					\
+*	  /	\					     \
 *  5(b)	15(b)				15(r)
 */
 void test_delRedBlackTree_delete_5_from_4_degree_tree_with_black_child(void){
@@ -121,14 +121,14 @@ void test_delRedBlackTree_delete_5_from_4_degree_tree_with_black_child(void){
 
 /**
 *	
-*	 root				root
-*	  |		del 1		 |
+*	 root			    	root
+*	  |		del 1		   |
 *	  v		 ---->		 v
-*	 5(b)				 15(b)
-*	/	\				/	\
-* 1(b)	15(r)		  5(b)	20(b)
-*		/	\			\
-*	  10(b)	 20(b)		10(r)
+*	 5(b)				   15(b)
+* 	/	\			    	/	\
+*  1(b)	15(r)		 5(b)	20(b)
+*	    	/ 	\		  	\
+*	    10(b)	 20(b)	10(r)
 */
 void test_delRedBlackTree_delete_1_from_6_degree_tree(void){
 	
@@ -152,14 +152,14 @@ void test_delRedBlackTree_delete_1_from_6_degree_tree(void){
 }
 
 /**
-*	 root				root
-*	  |		del 10		 |
-*	  v		 ---->		 v
-*	 5(b)				 5(b)
-*	/	\				/	\
-* 1(b)	15(r)		  1(b)	15(b)
-*		/	\					\
-*	  10(b)	 20(b)				 20(r)
+*	 root				      root
+*	  |		del 10		   |
+*	  v		 ---->		   v
+*	 5(b)				      5(b)
+*	/   \				      / 	\
+*1(b) 15(r)		    1(b)	15(b)
+*		    /	\					      \
+*	  10(b)	 20(b)				  20(r)
 */
 void test_delRedBlackTree_delete_10_from_5_degree_tree(void){
 	
@@ -183,14 +183,14 @@ void test_delRedBlackTree_delete_10_from_5_degree_tree(void){
 }
 
 /**
-*	 root				root
-*	  |		del 20		 |
-*	  v		 ---->		 v
-*	 5(b)				 5(b)
-*	/	\				/	\
+*	 root				      root
+*	  |		del 20		  |
+*	  v		 ---->		  v
+*	 5(b)				      5(b)
+*	  /	\				       /	\
 * 1(b)	15(r)		  1(b)	15(b)
-*		/	\				/
-*	  10(b)	 20(b)		10(r)
+*		     /	\				    /
+*	    10(b)	 20(b)	  10(r)
 */
 void test_delRedBlackTree_delete_20_from_5_degree_tree(void){
 	
@@ -214,14 +214,14 @@ void test_delRedBlackTree_delete_20_from_5_degree_tree(void){
 }
 
 /**
-*	 	 root				root
-*	  	 |		del 1		 |
-*	  	 v		 ---->		 v
-*	 	15(b)				 15(b)
-*	   /	\			   /	  \
-* 	5(r)	 25(r)		 5(b)	    25(r)
-*	/ \	 	  /	  \			\	    /	\
-* 1(b) 10(b) 20(b) 30(b)	10(r) 20(b)	 30(b)
+*	 	 root				          root
+*	  	 |		del 1		       |
+*	  	 v		 ---->	     	 v
+*	 	  15(b)				        15(b)
+*	   /	  \			          /	    \
+* 5(r)	   25(r)		   5(b)	       25(r)
+*	/   \	 	  /	  \		  	  \	       /	  \
+*1(b) 10(b) 20(b) 30(b)   10(r) 20(b)	 30(b)
 */
 void test_delRedBlackTree_delete_1_from_8_degree_tree(void){
 	
@@ -249,14 +249,14 @@ void test_delRedBlackTree_delete_1_from_8_degree_tree(void){
 }
 
 /**
-*	 	 root						root
-*	  	 |		del 10			 	 |
-*	  	 v		 ---->			 	 v
-*	 	15(b)					 	15(b)
-*	   /	\			  	 		/	  \
-* 	5(r)	 25(r)		 		5(b)	   25(r)
-*	/ \	 	  /	  \				/		    /	\
-* 1(b) 10(b) 20(b) 30(b)  	1(r) 		20(b)	 30(b)
+*	 	 root					        	root
+*	  	 |		del 10			 	   |
+*	  	 v		 ---->			 	   v
+*	 	  15(b)					 	      15(b)
+*	   /	   \			  	 		  /	  \
+* 5(r)	    25(r)		 		  5(b)	   25(r)
+*	/  \	    /	  \				  /		    /	  \
+*1(b) 10(b) 20(b) 30(b)  1(r) 	20(b)	 30(b)
 */
 void test_delRedBlackTree_delete_10_from_8_degree_tree(void){
 	
@@ -284,14 +284,14 @@ void test_delRedBlackTree_delete_10_from_8_degree_tree(void){
 }
 
 /**
-*	 	 root						root
+*	 	 root						      root
 *	  	 |		del 20			 	 |
 *	  	 v		 ---->			 	 v
-*	 	15(b)					 	15(b)
-*	   /	\			  	 		/	  \
-* 	5(r)	 25(r)		 		5(r)	   25(b)
-*	/ \	 	  /	  \				/	\	   		\
-* 1(b) 10(b) 20(b) 30(b)  	1(b) 	10(b)		 30(r)
+*	 	15(b)					 	      15(b)
+*	   /	  \			  	 	  	/	  \
+* 5(r)	    25(r)		 		5(r)	   25(b)
+*	/   \	 	  /	  \				/	  \	   		\
+*1(b) 10(b)20(b) 30(b) 1(b )10(b)		 30(r)
 */
 void test_delRedBlackTree_delete_20_from_8_degree_tree(void){
 	
@@ -319,14 +319,14 @@ void test_delRedBlackTree_delete_20_from_8_degree_tree(void){
 }
 
 /**
-*	 	 root						root
-*	  	 |		del 30			 	 |
-*	  	 v		 ---->			 	 v
-*	 	15(b)					 	15(b)
-*	   /	\			  	 		/	  \
-* 	5(r)	 25(r)		 		5(r)	   25(b)
-*	/ \	 	  /	  \				/	\	  	/
-* 1(b) 10(b) 20(b) 30(b)  	1(b) 	10(b)  20(r)
+*	 	 root						        root
+*	  	 |		del 30			 	    |
+*	  	 v		 ---->			 	    v
+*	 	  15(b)					 	        15(b)
+*	   /	   \			  	 		    /	    \
+* 5(r)	     25(r)		 		5(r)	      25(b)
+*	/   \	 	   /	  \				/	  \	  	  /
+*1(b) 10(b) 20(b) 30(b)	1(b) 	10(b)  20(r)
 */
 void test_delRedBlackTree_delete_30_from_8_degree_tree(void){
 	
@@ -354,12 +354,12 @@ void test_delRedBlackTree_delete_30_from_8_degree_tree(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root					      root
 *	  	 |		 del 1			  |
 *	  	 v		 ---->			  v
-*	 	5(b)					 15(b)
-*	   /	\					/	 \
-* 	1(b)	 15(b)		 	5(b)	  20(b)
+*	 	5(b)					       15(b)
+*	   /	\				      	/	   \
+* 1(b)	 15(b)		   	5(b)	  20(b)
 *		 	    \		
 * 			  	20(r)  	
 */
@@ -384,14 +384,14 @@ void test_delRedBlackTree_case_1a_remove_1(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root					      root
 *	  	 |		 del 1			  |
 *	  	 v		 ---->			  v
-*	 	5(b)					 10(b)
-*	   /	\					/	 \
-* 	1(b)	 15(b)		 	5(b)	  15(b)
+*	 	5(b)					     10(b)
+*	   /	\				      	/	 \
+* 1(b)	 15(b)		 	5(b)	  15(b)
 *		 	 /		
-* 			10(r)  	
+* 		10(r)  	
 */
 void test_delRedBlackTree_case_1b_remove_1(void){
 
@@ -414,12 +414,12 @@ void test_delRedBlackTree_case_1b_remove_1(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root					      root
 *	  	 |		 del 1			  |
 *	  	 v		 ---->			  v
-*	 	5(b)					 5(d)
-*	   /	\						 \
-* 	1(b)	 10(b)		 			  10(r)
+*	 	5(b)					       5(d)
+*	   /	\						       \
+* 1(b)	 10(b)		 			    10(r)
 *		 	 		
 * 			  	
 */
@@ -442,12 +442,12 @@ void test_delRedBlackTree_case_2a_remove_1(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root					      root
 *	  	 |		 del 1			  |
 *	  	 v		 ---->			  v
-*	 	5(r)					 5(b)
-*	   /	\						 \
-* 	1(b)	 10(b)		 			  10(r)
+*	 	5(r)					      5(b)
+*	   /	\						      \
+*	1(b) 10(b)		 			   10(r)
 *		 	 		
 * 			  	
 */
@@ -470,14 +470,14 @@ void test_delRedBlackTree_case_2b_remove_1(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root					      root
 *	  	 |		 del 1			  |
 *	  	 v		 ---->			  v
-*	 	5(b)					 15(b)
-*	   /	\					/	 \
-* 	1(b)	 15(r)		 	5(b)	  20(b)
-*		 	 /	 \				\
-* 		 10(b)    20(b)			10(r)
+*	 	5(b)					      15(b)
+*	   /	\					      /	 \
+*	1(b)	 15(r)		 	5(b)	  20(b)
+*		 	   /	 \				\
+* 		 10(b)  20(b)			10(r)
 */
 void test_delRedBlackTree_case_3a_remove_1(void){
 
@@ -502,16 +502,16 @@ void test_delRedBlackTree_case_3a_remove_1(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root				      	root
 *	  	 |		 del 1			  |
 *	  	 v		 ---->			  v
-*	 	5(b)					 20(b)
-*	   /	\					/	 \
+*	  	5(b)					     20(b)
+*	   /	\				        	/	 \
 * 	1(b)	 20(r)		 	10(r)	  25(b)
-*		 	 /	 \			/	\
-* 		 10(b)    25(b)	   5(b)	15(b)
-*			\
-*			15(r)
+*		 	      /	 \			  /	\
+* 		 10(b)   25(b) 5(b)	15(b)
+*			    \
+*			    15(r)
 */
 void test_delRedBlackTree_case_3b_remove_1(void){
 
@@ -537,12 +537,12 @@ void test_delRedBlackTree_case_3b_remove_1(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root				      	root
 *	  	 |		 del 15			  |
 *	  	 v		 ---->			  v
-*	 	10(b)					 5(b)
-*	   /	\					/	 \
-* 	5(b)	 15(b)		 	1(b)	  10(b)
+*	 	10(b)					      5(b)
+*	   /	\				      	/	 \
+* 	5(b) 15(b)		 	1(b)	  10(b)
 *	 /	 	    		
 * 1(r)		  	 	
 */
@@ -567,14 +567,14 @@ void test_delRedBlackTree_case_1a_removeRight_15(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root					      root
 *	  	 |		 del 15			  |
 *	  	 v		 ---->			  v
-*	 	10(b)					 5(b)
-*	   /	\					/	 \
-* 	1(b)	 15(b)		 	1(b)	  10(b)
+*	 	10(b)					       5(b)
+*	   /	\				      	/	   \
+* 1(b)	 15(b)	   	 	1(b)	  10(b)
 *	 	\	 	    		
-* 		5(r)		  	 	
+* 	5(r)		  	 	
 */
 void test_delRedBlackTree_case_1b_removeRight_15(void){
 
@@ -597,12 +597,12 @@ void test_delRedBlackTree_case_1b_removeRight_15(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root				      	root
 *	  	 |		 del 10			  |
 *	  	 v		 ---->			  v
-*	 	5(b)					 5(d)
-*	   /	\					/
-* 	1(b)	 10(b)		 	1(r)
+*	 	5(b)					       5(d)
+*	   /	\				      	/
+* 1(b)  10(b)		 	    1(r)
 *		 	 		
 * 			  	
 */
@@ -625,12 +625,12 @@ void test_delRedBlackTree_case_2a_removeRight_10(void){
 }
 
 /**
-*	 	 root					root
+*	 	 root					      root
 *	  	 |		 del 10			  |
 *	  	 v		 ---->			  v
-*	 	5(r)					 5(b)
-*	   /	\					/
-* 	1(b)	 10(b)		 	1(r)
+*	 	5(r)				      	 5(b)
+*	   /	\				      	/
+* 1(b)	10(b)		     	1(r)
 *		 	 		
 * 			  	
 */
@@ -653,14 +653,14 @@ void test_delRedBlackTree_case_2b_removeRight_10(void){
 }
 
 /**
-*	 	 	root					root
+*	 	 	root				      	root
 *	  	 	 |		 del 20			  |
 *	  	 	 v		 ---->			  v
-*	 		15(b)					 5(b)
-*	   		/	\					/	 \
+*	 		15(b)					       5(b)
+*	   		/	\				      	/	 \
 * 		5(r)	 20(b)		 	1(b)	  15(b)
-*		/	\							  /
-* 	1(b)    10(b)						10(r)
+*		  /	\							  /
+* 	1(b) 10(b)				10(r)
 */
 void test_delRedBlackTree_case_3a_removeRight_20(void){
 
@@ -685,15 +685,15 @@ void test_delRedBlackTree_case_3a_removeRight_20(void){
 }
 
 /**
-*	 	 	root					root
+*	 	 	root					      root
 *	  	 	 |		 del 25			  |
 *	  	 	 v		 ---->			  v
-*	 		20(b)					 5(b)
-*	   		/	\					/	 \
-* 		5(r)	 25(b)		 	1(b)	  15(r)
-*		/	\							  /		\
-* 	1(b)    15(b)						10(b)	 20(b)	
-*			/
+*	 		20(b)					      5(b)
+*	   		/	\				      	/	 \
+* 	5(r)	 25(b)		 	1(b)	  15(r)
+*		/	\							          /		\
+* 1(b) 15(b)				  		10(b)	 20(b)	
+*	     /
 *		 10(r)			
 */
 void test_delRedBlackTree_case_3b_removeRight_25(void){
@@ -721,9 +721,9 @@ void test_delRedBlackTree_case_3b_removeRight_25(void){
 }
 
 /**
-*	 	 	root					root
+*	 	 	root				        	root
 *	  	 	 |		 successor		  |
-*	  	 	 v		 	5			  v
+*	  	 	 v		 	5			        v
 *	 		5(b)	 -------->		  -
 
 */
@@ -741,9 +741,9 @@ void test_removeNextLargerSuccessor_remove_5_and_do_nothing(void){
 }
 
 /**
-*	 	 	root					root
+*	 	 	root					        root
 *	  	 	 |		 successor		  |
-*	  	 	 v		 	5			  v
+*	  	 	 v		 	5			        v
 *	 		5(b)	 -------->		 10(b)
 *	   			\
 *		       10(r)
@@ -765,10 +765,10 @@ void test_removeNextLargerSuccessor_case_1(void){
 }
 
 /**
-*	 	 	root					root
+*	 	 	root					        root
 *	  	 	 |		 successor		  |
-*	  	 	 v		 	1			  v
-*	   		/		-------->		//	 
+*	  	 	 v		 	1			        v
+*	   		/		-------->		      //	 
 *		  1(b)   					 
 */
 void test_removeNextLargerSuccessor_case_2(void){
@@ -786,10 +786,10 @@ void test_removeNextLargerSuccessor_case_2(void){
 }
 
 /**
-*	 	 	root					root
+*	 	 	root					        root
 *	  	 	 |		 successor		  |
-*	  	 	 v		 	1			  v
-*	   		/		-------->		 /
+*	  	 	 v		 	1			        v
+*	   		/		-------->		      /
 *		  1(r)   					 
 */
 void test_removeNextLargerSuccessor_case_3(void){
@@ -807,11 +807,11 @@ void test_removeNextLargerSuccessor_case_3(void){
 }
 
 /**
-*	 	 root						root
+*	 	 root						        root
 *	  	 |		successor 5			 |
-*	  	 v		 ---->			 	 v
-*	 	15(b)					 	15(b)
-*	   /	\			  	 			  \
+*	  	 v		 ---->			 	    v
+*	 	15(b)					 	        15(b)
+*	   /	\			  	 			      \
 * 	5(r)	 25(r)		 			     25(r)
 */
 void test_removeNextLargerSuccessor_given_5r_15b_25r_then_remove_5(){
@@ -831,14 +831,14 @@ void test_removeNextLargerSuccessor_given_5r_15b_25r_then_remove_5(){
 }
 
 /**
-*	 	 root						root
+*	 	 root					        	root
 *	  	 |		successor 1			 |
-*	  	 v		 ---->			 	 v
-*	 	15(b)					 	15(b)
-*	   /	\			  	 		/	  \
+*	  	 v		 ---->			  	 v
+*	 	15(b)					 	        15(b)
+*	   /	\			  	 	      	/	  \
 * 	5(b)	 25(b)		 		5(b)	   25(b)
-*	/	 	  /	  						  	/
-* 1(r) 		 20(r)   		 		 	20(r) 
+*	/	 	      /	  						  	/
+*1(r) 		20(r)   		 		 	20(r) 
 */
 void test_removeNextLargerSuccessor_given_1r_5b_15b_20r_25b_then_remove_1(){
 	setNode(&node1, NULL, NULL, 'r');
@@ -860,14 +860,14 @@ void test_removeNextLargerSuccessor_given_1r_5b_15b_20r_25b_then_remove_1(){
 }
 
 /**
-*	 	 root						root
+*	 	 root						        root
 *	  	 |		successor 1			 |
-*	  	 v		 ---->			 	 v
-*	 	15(b)					 	15(d)
-*	   /	\			  	 		/	  \
+*	  	 v		 ---->			 	   v
+*	 	15(b)					 	        15(d)
+*	   /	  \			  	 	    	/	  \
 * 	5(b)	 25(b)		 		5(b)	   25(r)
-*	/ \	 	  /	  \					\	  	/	\
-* 1(b) 10(b) 20(b) 30(b)  		 	10(r) 20(b)  30(b)  
+*	/    \	 	 /	  \					\	  	/	    \
+*1(b) 10(b) 20(b) 30(b)  	 	10(r) 20(b)  30(b)  
 */
 void test_removeNextLargerSuccessor_given_1b_5b_10b_15b_20b_25b_30b_then_remove_1(){
 	setNode(&node1, NULL, NULL, 'b');
@@ -893,16 +893,16 @@ void test_removeNextLargerSuccessor_given_1b_5b_10b_15b_20b_25b_30b_then_remove_
 }
 
 /**
-*	 	 root						root
+*	 	 root						        root
 *	  	 |		successor 1			 |
-*	  	 v		 ---->			 	 v
-*	 	15(b)					 	15(b)
-*	   /	\			  	 		/	  \
-* 	5(b)	 25(b)		 		5(b)	   25(b)
-*	/ \	 	  /	  \				/	\	  	/	\
-* 1(b) 10(b) 20(b) 30(b)  	2(b) 	10(b) 20(b)  30(b)  
-*	\
-*	2(r)
+*	  	 v		 ---->			  	 v
+*	 	  15(b)					 	      15(b)
+*	   /	   \			  	 	  	/	    \
+* 5(b)	      25(b)		 		5(b)	     25(b)
+*	/   \	 	     /	  \			/	\	  	      /	\
+* 1(b) 10(b) 20(b) 30(b) 2(b) 10(b)   20(b)  30(b)  
+*	  \
+*	   2(r)
 */
 void test_removeNextLargerSuccessor_given_1b_2r_5b_10b_15b_20b_25b_30b_then_remove_1(){
 	setNode(&node2, NULL, NULL, 'r');
@@ -930,12 +930,12 @@ void test_removeNextLargerSuccessor_given_1b_2r_5b_10b_15b_20b_25b_30b_then_remo
 }
 
 /**
-*	 	 root						root
+*	 	 root						      root
 *	  	 |		remove 15			 |
 *	  	 v		 ---->			 	 v
-*	 	15(b)					 	25(b) 
-*	   /	\			  	 		/
-*	  5(r)	25(r)				 5(r)
+*	 	15(b)					      	25(b) 
+*	   /	\			  	 		    /
+*	  5(r)	25(r)				  5(r)
 */
 void test_delRedBlackTree_given_5r_15b_25r_then_remove_15(){
 
@@ -954,10 +954,10 @@ void test_delRedBlackTree_given_5r_15b_25r_then_remove_15(){
 }
 
 /**
-*	 	 root						root
+*	 	 root					      	root
 *	  	 |		remove 15			 |
 *	  	 v		 ---->			 	 v
-*	 	15(b)					 	5(b) 
+*	 	15(b)					 	      5(b) 
 *	   /				  	 		
 *	  5(r)					
 */
@@ -976,14 +976,14 @@ void test_delRedBlackTree_given_5r_15b_then_remove_15(){
 }
 
 /**
-*	 	root						root
+*	 	root						      root
 *	  	 |		remove 5			 |
 *	  	 v		 ---->			 	 v
-*	 	15(b)					 	15(b) 
-*	   /	\			  	 		/	\
+*	 	15(b)					 	      15(b) 
+*	   /	\			  	 	    	/	\
 *	  5(b)	25(b)				 10(b)	25(b)
-*	  /  \						 /
-*	1(r)  10(r)				  1(r)
+*	  /  \						  /
+*	1(r)  10(r)				 1(r)
 */
 void test_delRedBlackTree_given_1r_5b_15r_20b_25b_then_remove_5(){
 
@@ -1008,15 +1008,15 @@ void test_delRedBlackTree_given_1r_5b_15r_20b_25b_then_remove_5(){
 /**
 *	Testing : remove left parent without case involved
 *
-*	 	root						root
+*	 	root						      root
 *	  	 |		remove 5			 |
 *	  	 v		 ---->			 	 v
-*	 	 20(b)					 	15(b) 
-*	   /	  \			  	 		/	\
-*	 5(b)	   25(b)			10(b)	25(b)
-*	/  \			\			 /
-*1(b)  15(b)		30(b)		  1(r)
-*		/
+*	 	 20(b)					 	      15(b) 
+*	   /	  \			  	 	    	/	\
+*	 5(b)	   25(b)			    10(b)	25(b)
+*	/  \			\			       /
+*1(b)  15(b)	30(b)		 1(r)
+*		    /
 *	   10(r)
 */
 void test_delRedBlackTree_remove_5b_left_parent_without_case_involved(){
@@ -1045,14 +1045,14 @@ void test_delRedBlackTree_remove_5b_left_parent_without_case_involved(){
 /**
 *	Testing : remove left parent with case 1a
 *
-*	 		root						root
-*	  	 	|		remove 5			 |
-*	  	 	v		 ---->			 	 v
-*	 	 	20(b)					 	20(b) 
-*	   		/	  \			  	 		/	\
-*	 	5(b)	   35(b)			2(b)	  35(b)
-*		/  \		/	\			/ \		  /	 \
-*	2(b)  15(b)  30(b)	40(b)	1(b)  15(b)	30(b) 40(b) 
+*	 		root				    		     root
+*	  	 	|		    remove 5			   |
+*	  	 	v		     ---->			  	 v
+*	 	 	20(b)					 	         20(b) 
+*	   		/	  \			  	 		      / 	  \
+*	 	5(b)	   35(b)			      2(b)	    35(b)
+*		/  \		  /	   \			     /  \		  /	 \
+*	2(b) 15(b) 30(b)	40(b)	   1(b) 15(b) 30(b) 40(b) 
 *	/		  
 * 1(r)		
 */
@@ -1085,14 +1085,14 @@ void test_delRedBlackTree_remove_5b_left_parent_with_case_1a(){
 /**
 *	Testing : remove left parent with case 1b
 *
-*	 		root						root
-*	  	 	|		remove 5			 |
-*	  	 	v		 ---->			 	 v
-*	 	 	20(b)					 	20(b) 
-*	   		/	  \			  	 		/	\
-*	 	5(b)	   35(b)			2(b)	  35(b)
-*		/  \		/	\			/ \		  /	 \
-*	1(b)  15(b)  30(b)	40(b)	1(b)  15(b)	30(b) 40(b) 
+*	 		root						              root
+*	  	 	|		remove 5		  	         |
+*	  	 	v		 ---->			  	         v
+*	 	 	20(b)					      	        20(b) 
+*	   		/	  \			  	 	  	      /	      \
+*	 	5(b)	   35(b)			       2(b)	      35(b)
+*		/  \	  	/	  \			       /   \		  /	 \
+*	1(b) 15(b) 30(b) 40(b)  	1(b)  15(b)	30(b) 40(b) 
 *		\	  
 * 		2(r)		
 */
@@ -1125,14 +1125,14 @@ void test_delRedBlackTree_remove_5b_left_parent_with_case_1b(){
 /**
 *	Testing : remove left parent with case 2a and 2b
 *
-*	 	root						root
-*	  	 |		remove 5			 |
-*	  	 v		 ---->			 	 v
-*	 	 20(r)					 	20(b) 
-*	   /	  \			  	 		/	\
-*	 5(b)	   30(b)			15(b)	  30(r)
-*	/  \		/	\			/ 		  /	 	\
-*1(b)  15(b)  25(b)	35(b)	1(r)  		25(b)  35(b)
+*	 	root						                  root
+*	  	 |		remove 5			               |
+*	  	 v		 ---->			              	 v
+*	 	 20(r)					 	                20(b) 
+*	   /	  \			  	 		                /	\
+*	 5(b)	   30(b)			              15(b)	  30(r)
+*	/  \		  /	   \			             / 		  /	  	\
+*1(b) 15(b) 25(b)	35(b)       	1(r)  		25(b)  35(b)
 */
 void test_delRedBlackTree_remove_5b_left_parent_with_case_2a_and_2b(){
 
@@ -1161,16 +1161,16 @@ void test_delRedBlackTree_remove_5b_left_parent_with_case_2a_and_2b(){
 /**
 *	Testing : remove right parent without case involve
 *
-*	 	root						root
-*	  	 |		remove 25			 |
-*	  	 v		 ---->			 	 v
-*	 	 20(b)					 	20(b) 
-*	   /	  \			  	 		/	\
-*	 5(b)	   25(b)			5(b)	  35(b)
-*	/  \		/	\			/ \		  /	 \
-*1(b)  15(b)  30(b)	35(b)	1(b)  15(b)	30(b) 40(b) 
-*						\
-*	  	`				40(r)
+*	 	root						                 root
+*	  	 |		remove 25			             |
+*	  	 v		 ---->			 	             v
+*	 	 20(b)					 	              20(b) 
+*	   /	     \			  	 	          	/	\
+*	 5(b)       25(b)		          	5(b)	  35(b)
+*	/   \		    /	  \		        	/ \		      /	 \
+*1(b) 15(b) 30(b)	35(b)     	1(b)  15(b)	30(b) 40(b) 
+*						        \
+*	  	`				      40(r)
 */
 void test_delRedBlackTree_remove_25b_right_parent_without_case_involved(){
 
@@ -1200,16 +1200,16 @@ void test_delRedBlackTree_remove_25b_right_parent_without_case_involved(){
 /**
 *	Testing : remove right parent with case 1a
 *
-*	 	root						root
-*	  	 |		remove 35			 |
-*	  	 v		 ---->			 	 v
-*	 	 20(b)					 	20(b) 
-*	   /	  \			  	 		/	\
-*	 5(b)	   35(b)			5(b)	  30(b)
-*	/  \		/	\			/ \		  /	 \
-*1(b)  15(b)  30(b)	40(b)	1(b)  15(b)	25(b) 40(b) 
-*			  /
-*			25(r)
+*	 	root						              root
+*	  	 |		remove 35			           |
+*	  	 v		 ---->			          	 v
+*	 	 20(b)					               	20(b) 
+*	   /	    \			  	            		/	\
+*	 5(b)	     35(b)			          5(b)	  30(b)
+*	/  \	    	/	  \			          / \		  /	 \
+*1(b) 15(b) 30(b) 40(b)	      1(b)  15(b)	25(b) 40(b) 
+*			       /
+*			    25(r)
 */
 void test_delRedBlackTree_remove_35b_right_parent_with_case_1a(){
 
@@ -1240,17 +1240,17 @@ void test_delRedBlackTree_remove_35b_right_parent_with_case_1a(){
 /**
 *	Testing : remove right parent with case 1b
 *
-*	 	root						root
-*	  	 |		remove 35			 |
-*	  	 v		 ---->			 	 v
-*	 	 20(b)					 	20(b) 
-*	   /	  \			  	 		/	\
-*	 5(b)	   35(b)			5(b)	  30(b)
-*	/  \		/	\			/ \		  /	 \
-*1(b)  15(b)  25(b)	40(b)	1(b)  15(b)	25(b) 40(b) 
-*				\
-*				30(r)
-*/
+*	 	root						                  root
+*	  	 |		remove 35			             |
+*	  	 v		 ---->			            	 v
+*	 	 20(b)					 	                20(b) 
+*	   /	   \			  	 	              	/	\
+*	 5(b)	    35(b)			              5(b)	  30(b)
+*	/    \		  /	  \		              / \		  /	   \
+*1(b) 15(b) 25(b) 40(b)       	1(b)  15(b)	25(b) 40(b) 
+*				      \
+*				      30(r)
+*/  
 void test_delRedBlackTree_remove_35b_right_parent_with_case_1b(){
 
 	setNode(&node30, NULL, NULL, 'r');
@@ -1280,14 +1280,14 @@ void test_delRedBlackTree_remove_35b_right_parent_with_case_1b(){
 /**
 *	Testing : remove right parent with case 2a and 2b
 *
-*	 	root						root
-*	  	 |		remove 30			 |
-*	  	 v		 ---->			 	 v
-*	 	 20(r)					 	20(b) 
-*	   /	  \			  	 		/	\
-*	 5(b)	   30(b)			5(r)	  35(b)
-*	/  \		/	\			/ \		  /	 
-*1(b)  15(b)  25(b)	35(b)	1(b)  15(b)	25(r)  
+*	 	root						                root
+*	  	 |		remove 30			           |
+*	  	 v		 ---->			          	 v
+*	 	 20(r)					 	              20(b) 
+*	   /	   \			  	 	            	/	\
+*	 5(b)	     30(b)			          5(r)	  35(b)
+*	/  \		  /	  \			            / \		   /	 
+*1(b) 15(b) 25(b)	35(b)     	1(b)  15(b)	25(r)  
 */
 void test_delRedBlackTree_remove_30b_right_parent_with_case_2a_and_2b(){
 

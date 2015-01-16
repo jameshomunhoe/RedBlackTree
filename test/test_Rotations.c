@@ -65,9 +65,9 @@ void test_leftRotate_should_rotate_2_node(void){
 }
 
 /**
-*	1				  5
+*	1			  	  5
 *	 \				 /	\
-*  	  5		>>		1	 10
+*  	5		>>	1 	 10
 *	   \
 *		10
 *
@@ -90,13 +90,13 @@ void test_leftRotate_should_rotate_3_node(void){
 }
 
 /**
- *    	     5					15
+ *    	    5 					15
  *  	    /  \			   /   \
- * 		   1	15		>>	  5		20
- * 		       /  \			 / \	  \
- *		  	  10   20		1	10	  25
- *					 \
- *				 	  25
+ * 		   1	15		>>	5 		20
+ * 		      /  \			 / \	  \
+ *		  	 10   20		1	10	  25
+ *				 \
+ *			 	  25
  *
  */
 void test_leftRotate_should_rotate_6_node(void){
@@ -127,8 +127,8 @@ void test_leftRotate_should_rotate_6_node(void){
 
 /**
 *		10			5
-*	   /  			 \
-*	  5		>>		  10
+*	   /  			\
+*	  5		>>		 10
 */
 void test_rightRotate_should_rotate_2_node(void){
 	setNode(&node5, NULL, NULL, 'b');
@@ -146,9 +146,9 @@ void test_rightRotate_should_rotate_2_node(void){
 
 /**
 *		10
-*	   /  			5
+*	   /  			  5
 *	  5		>>	   /  \	
-*	 /			  1	  10
+*	 /			    1	  10
 *	1
 */
 void test_rightRotate_should_rotate_3_node(void){
@@ -171,9 +171,9 @@ void test_rightRotate_should_rotate_3_node(void){
 /**
  *         20                    10
  *        /  \                  /  \
- *      10    25			   5	20
+ *      10    25	       		   5	20
  *     /  \           >>      /    /  \
- *    5    15				 1	  15   25
+ *    5    15				         1	  15   25
  *   /
  *  1 
  *
@@ -205,11 +205,11 @@ void test_rightRotate_should_rotate_6_node(void){
 }
 
 /**
-*		10			10				5
+*		  10			10				5
 *	   /  			/			   /  \
-*	  1		>>	   5		>>	  1	   10
+*	  1		>>   5		>> 1	   10
 *	   \		  /
-*		5		 1
+*		  5		 1
 */
 void test_leftRightRotate_should_rotate_3_node(void){
 	setNode(&node5, NULL, NULL, 'b');
@@ -229,12 +229,12 @@ void test_leftRightRotate_should_rotate_3_node(void){
 }
 
 /**
-*		15			 15				10
+*		15			 15				  10
 *	   /  			/			   /  \
-*	  5		>>	   10		>>	  5	   15
+*	  5		>>   10		>>  5	   15
 *	 /  \		  /				 /
 *	1	 10		 5				1
-*				/
+*				  /
 *			   1
 */
 void test_leftRightRotate_should_rotate_4_node(void){
@@ -258,13 +258,13 @@ void test_leftRightRotate_should_rotate_4_node(void){
 }
 
 /**
-*		20			 		20						10
+* 		20  			 		20						  10
 *	   /  \				   /  \					  /		\
-*	  5		25		>>	  10   25		>>		 5		20
-*	 /  \		  		 /	\					/	    / \
-*	1	 10		 		5	 15				   1	  15	25
+*	  5		25		>> 10   25		>>   5		20
+*	 /  \		  		 /	\					  /     / \
+*	1	 10		 	   	5	 15				   1    15	25
 *		  \			   /
-*		   15 	  	  1
+*		   15 	  1
 */
 void test_leftRightRotate_should_rotate_6_node(void){
 	setNode(&node15, NULL, NULL, 'b');
@@ -293,13 +293,13 @@ void test_leftRightRotate_should_rotate_6_node(void){
 }
 
 /**
-*		20			 		20						15
+*	  	20		  	 		20				  		15
 *	   /  \				   /  \					  /		\
-*	  5		25		>>	  15   25		>>		 5		20
-*	 /  \		  		 /						/  \      \
-*	1	 15		 		5	 				   1	10 	   25
+*	  5		25	>>	  15   25		>>	 5		20
+*	 /  \		  		 /						  /  \     \
+*	1	 15		 		  5	 				     1 	10 	    25
 *		 /			   /  \
-*		10 		  	  1	   10
+*		10 		   1	   10
 */
 void test_leftRightRotate_should_rotate_6_node_2nd_situation(void){
 	setNode(&node10, NULL, NULL, 'b');
@@ -328,11 +328,11 @@ void test_leftRightRotate_should_rotate_6_node_2nd_situation(void){
 }
 
 /**
-*		1				1					5
-*	     \				 \				   /  \
-*	  	  10		>>	  5			>>	  1    10
-*	     /	  			   \
-*		5			 		10
+*		1			    1		    			5
+*	   \				 \				   /  \
+*	    10		>>	5			>>  1    10
+*	    /	  			 \
+*		 5	 		      10
 */
 void test_rightLeftRotate_should_rotate_3_node(void){
 	setNode(&node5, NULL, NULL, 'b');
@@ -352,13 +352,13 @@ void test_rightLeftRotate_should_rotate_3_node(void){
 }
 
 /**
-*		1						1						5
+*		  1  						1			    			5
 *	     \ 						 \					   /  \
-*	  	  10		>>			  5			>>		  1	   10
-*	   	 /	\  					   \				 		\
-*		5 	15	 					10						15
-*									 \
-*			   						  15
+*	  	  10		>>			5			>>    1	   10
+*	   	 /	\  					 \				    		\
+*		  5   15	 				  10				      15
+*									        \
+*			   						       15
 */
 void test_rightLeftRotate_should_rotate_4_node(void){
 	setNode(&node5, NULL, NULL, 'b');
@@ -379,13 +379,13 @@ void test_rightLeftRotate_should_rotate_4_node(void){
 }
 
 /**
-*		5			 				5							15
+*		  5			 				    5							    15
 *	   /  \						   /  \						   /   \
-*	  1		20			>>		  1	   15			>>		  5	    20
-*	       /  \  					  /  \					 / \	  \
-*		 15	   25 					 10	  20				1	10		25
+*	  1		20			>>	  1	   15			>>	  5	    20
+*	      /  \  					  /  \				 / \	  \
+*		  15	   25 				 10	  20			1	  10		25
 *		 / 			  						\
-*		10  	  	  						 25
+*		10  	  	  					 25
 */
 void test_rightLeftRotate_should_rotate_6_node(void){
 	setNode(&node1, NULL, NULL, 'b');
@@ -414,13 +414,13 @@ void test_rightLeftRotate_should_rotate_6_node(void){
 }
 
 /**
-*		5			 		5						10
-*	   /  \				   /  \					  /		\
-*	  1		20		>>	  1   10		>>		 5		20
-*	   	   /  \  		 	 	\				/       /  \
-*		  10	25	 			 20			   1       15   25
-*		   \			   		/	\
-*			15 		  	  	   15	25
+*		   5			 		  5						      10
+*	   /  \				   /  \					    /		\
+*	  1		20		>>  1   10		>>		 5		20
+*	   	  /  \  		   	 	\				  /     /  \
+*		   10	25	 	  	  	 20			  1    15   25
+*		    \			   		     /	\
+*			  15 		  	  	  15	25
 */
 void test_rightLeftRotate_should_rotate_6_node_2nd_situation(void){
 	setNode(&node1, NULL, NULL, 'b');

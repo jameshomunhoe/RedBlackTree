@@ -124,12 +124,12 @@ void test_addRedBlackTree_add_10_to_empty_tree(void){
 }
 
 /**
-*	 root				root
+*	 root				    root
 *	  |		 add 5		 |
 *	  v		 ---->		 v
 *	  10(b)				 10(b)
-*						 /
-*						5(r)
+*						    /
+*						  5(r)
 *
 */
 void test_addRedBlackTree_add_5_to_tree_with_root_10(void){
@@ -147,12 +147,12 @@ void test_addRedBlackTree_add_5_to_tree_with_root_10(void){
 }
 
 /**
-*	 root				root
+*	 root				    root
 *	  |		 add 10		 |
 *	  v		 ---->		 v
 *	  5(b)				 5(b)
-*						   \
-*							10(r)
+*						      \
+*							    10(r)
 *
 */
 void test_addRedBlackTree_add_10_to_tree_with_root_5(void){
@@ -170,12 +170,12 @@ void test_addRedBlackTree_add_10_to_tree_with_root_5(void){
 }
 
 /**
-*	 root				root
+*	 root				    root
 *	  |		 add 15		 |
 *	  v		 ---->		 v		
 *	  10(b)				10(b)
-*	  /				 	/	\
-*	5(r)			 5(r)   15(r)
+*	  /				 	    /	\
+*	5(r)			  5(r)   15(r)
 *					
 *				 
 */
@@ -196,12 +196,12 @@ void test_addRedBlackTree_3_degree_add_15_to_tree_with_root_10(void){
 }
 
 /**
-*	 root				root
+*	 root				    root
 *	  |		 add 1		 |
 *	  v		 ---->		 v		
-*	  10(b)				5(b)
-*	  /				 	/	\
-*	5(r)			 1(r)   10(r)
+*	  10(b)				  5(b)
+*	  /				 	    /	\
+*	5(r)			  1(r)   10(r)
 *					
 *				 
 */
@@ -222,12 +222,12 @@ void test_addRedBlackTree_3_degree_add_1_to_tree_with_root_10(void){
 }
 
 /**
-*	 root				root
+*	 root				    root
 *	  |		 add 5		 |
 *	  v		 ---->		 v		
-*	  10(b)				5(b)
-*	  /				 	/	\
-*	1(r)			 1(r)   10(r)
+*	  10(b)				  5(b)
+*	  /				 	    /	\
+*	1(r)			  1(r)   10(r)
 *					
 *				 
 */
@@ -248,11 +248,11 @@ void test_addRedBlackTree_3_degree_add_5_to_tree_with_root_10(void){
 }
 
 /**
-*	 root				root
+*	 root				    root
 *	  |		 add 1		 |
 *	  v		 ---->		 v		
 *	  5(b)				5(b)
-*	 	 \			 	/	\
+*	 	 \			 	  /	\
 *		10(r)		 1(r)   10(r)
 *					
 *				 
@@ -274,11 +274,11 @@ void test_addRedBlackTree_3_degree_add_1_to_tree_with_root_5(void){
 }
 
 /**
-*	 root				root
+*	 root				    root
 *	  |		 add 10		 |
 *	  v		 ---->		 v		
 *	  1(b)				5(b)
-*	 	 \			 	/	\
+*	 	 \			 	  /	\
 *		5(r)		 1(r)   10(r)
 *					
 *				 
@@ -300,11 +300,11 @@ void test_addRedBlackTree_3_degree_add_10_to_tree_with_root_1(void){
 }
 
 /**
-*	 root				root
+*	 root				    root
 *	  |		 add 5		 |
 *	  v		 ---->		 v		
 *	  1(b)				5(b)
-*	 	 \			 	/	\
+*	 	 \			 	   /	\
 *		10(r)		 1(r)   10(r)
 *					
 *				 
@@ -353,14 +353,14 @@ void test_addRedBlackTree_throw_exception_with_same_value_input(void){
 // 23th October
 
 /**
-*		 root				root
+*		 root				    root
 *		  |		 add 1		 |
 *		  v		 ---->		 v		
-*		 10(b)				10(b)
-*		 /	 \			 	/	\
+*		 10(b)				  10(b)
+*		 /	 \			 	  /	\
 *	 5(r)	15(r)		 5(b)   15(b)
-*	  					 /
-*		 				1(r)
+*	  					  /
+*		 				  1(r)
 */
 void test_addRedBlackTree_4_degree_add_1_to_tree_with_root_10(void){
 	
@@ -383,14 +383,14 @@ void test_addRedBlackTree_4_degree_add_1_to_tree_with_root_10(void){
 /**
 *		_addRedBlackTree(does not change root color)
 *
-*		 root				root
+*		 root				    root
 *		  |		 add 1		 |
 *		  v		 ---->		 v		
-*		 10(b)				10(r)
-*		 /	 \			 	/	\
+*		 10(b)				  10(r)
+*		 /	 \			 	  /	\
 *	 5(r)	15(r)		 5(b)   15(b)
-*	  					 /
-*		 				1(r)
+*	  					  /
+*		 				  1(r)
 */
 void test__addRedBlackTree_4_degree_add_1_to_tree_with_root_10(void){
 	
@@ -411,14 +411,14 @@ void test__addRedBlackTree_4_degree_add_1_to_tree_with_root_10(void){
 }
 
 /**
-*		 root				root
+*		 root			    	root
 *		  |		 add 5		 |
 *		  v		 ---->		 v		
-*		 10(b)				10(b)
-*		 /	 \			 	/	\
-*	 1(r)	 15(r)		 1(b)   15(b)
-*	  	 				 	\
-*		 					5(r)
+*		 10(b)				  10(b)
+*		 /	 \			 	  /	\
+*	 1(r)	 15(r)  1(b)   15(b)
+*	  	 				 	  \
+*		 					    5(r)
 */
 void test_addRedBlackTree_4_degree_add_5_to_tree_with_root_10(void){
 	
@@ -441,14 +441,14 @@ void test_addRedBlackTree_4_degree_add_5_to_tree_with_root_10(void){
 /**
 *		_addRedBlackTree(does not change root color)
 *
-*		 root				root
+*		 root				    root
 *		  |		 add 5		 |
 *		  v		 ---->		 v		
-*		 10(b)				10(r)
-*		 /	 \			 	/	\
+*		 10(b)				  10(r)
+*		 /	 \			 	  /	  \
 *	 1(r)	 15(r)		 1(b)   15(b)
-*	  	 				 	\
-*		 					5(r)
+*	  	 				    	\
+*		 					      5(r)
 */
 void test__addRedBlackTree_4_degree_add_5_to_tree_with_root_10(void){
 	
@@ -469,11 +469,11 @@ void test__addRedBlackTree_4_degree_add_5_to_tree_with_root_10(void){
 }
 
 /**
-*		 root				root
+*		 root				    root
 *		  |		 add 10		 |
 *		  v		 ---->		 v		
-*		 5(b)				5(b)
-*		 /	 \			 	/	\
+*		 5(b)				    5(b)
+*		 /	 \			 	  /	  \
 *	 1(r)	 15(r)		 1(b)   15(b)
 *	  	 				 		/
 *		 					   10(r)
@@ -499,11 +499,11 @@ void test_addRedBlackTree_4_degree_add_10_to_tree_with_root_5(void){
 /**
 *		_addRedBlackTree(does not change root color)
 *
-*		 root				root
+*		 root				    root
 *		  |		 add 10		 |
 *		  v		 ---->		 v		
-*		 5(b)				5(b)
-*		 /	 \			 	/	\
+*		 5(b)				    5(b)
+*		 /	 \			 	  /	  \
 *	 1(r)	 15(r)		 1(b)   15(b)
 *	  	 				 		/
 *		 					   10(r)
@@ -527,14 +527,14 @@ void test__addRedBlackTree_4_degree_add_10_to_tree_with_root_5(void){
 }
 
 /**
-*		 root				root
+*		 root				    root
 *		  |		 add 15		 |
 *		  v		 ---->		 v		
-*		 5(b)				5(b)
-*		 /	 \			 	/	\
-*	 1(r)	 10(r)		 1(b)   10(b)
-*	  	 				 			\
-*		 					   		15(r)
+*		 5(b)				    5(b)
+*		 /	 \			 	/   	\
+*	 1(r)	 10(r)	1(b)   10(b)
+*	  	 				 			      \
+*		 					   		      15(r)
 */
 void test_addRedBlackTree_4_degree_add_15_to_tree_with_root_5(void){
 	
@@ -557,11 +557,11 @@ void test_addRedBlackTree_4_degree_add_15_to_tree_with_root_5(void){
 /**
 *		_addRedBlackTree(does not change root color)
 *
-*		 root				root
+*		 root				    root
 *		  |		 add 15		 |
 *		  v		 ---->		 v		
-*		 5(b)				5(b)
-*		 /	 \			 	/	\
+*		 5(b)				    5(b)
+*		 /	 \			 	  /	  \
 *	 1(r)	 10(r)		 1(b)   10(b)
 *	  	 				 			\
 *		 					   		15(r)
@@ -585,16 +585,16 @@ void test__addRedBlackTree_4_degree_add_15_to_tree_with_root_5(void){
 }
 
 /**
-*			   root					root
-*				|		add 5 		 |
-*		 		v		----> 		 v		
-*			  20(b)					20(b)
-*			 /	  \				   /	\
-*		 10(b)	   25(b)		10(r)	 25(b)
-*		 /	 \			 		/	\
+*			 root				    	root
+*				|	  	add 5 		 |
+*		 		v		  ----> 		 v		
+*			  20(b)					  20(b)
+*			 /	  \				    / 	\
+*		 10(b)	 25(b)		10(r)	 25(b)
+*		 /	 \			 		  /	\
 *	 1(r)	 15(r)		 	1(b)    15(b)
-*	  	 				 		\
-*		 					   	5(r)
+*	  	 				 		    \
+*		 					   	    5(r)
 */
 void test_addRedBlackTree_6_degree_add_5_to_tree_with_root_20(void){
 	
@@ -622,16 +622,16 @@ void test_addRedBlackTree_6_degree_add_5_to_tree_with_root_20(void){
 /**
 *		_addRedBlackTree(does not change root color)
 *
-*			   root					root
-*				|		add 5 		 |
-*		 		v		----> 		 v		
+*			 root		    			root
+*				|		  add 5 		 |
+*		 		v		  ----> 		 v		
 *			  20(b)					20(b)
 *			 /	  \				   /	\
-*		 10(b)	   25(b)		10(r)	 25(b)
+*		 10(b)	 25(b)	10(r)	 25(b)
 *		 /	 \			 		/	\
-*	 1(r)	 15(r)		 	1(b)    15(b)
-*	  	 				 		\
-*		 					   	5(r)
+*	 1(r)	 15(r)		1(b) 15(b)
+*	  	 				 		  \
+*		 					   	  5(r)
 */
 void test__addRedBlackTree_6_degree_add_5_to_tree_with_root_20(void){
 	
@@ -657,18 +657,18 @@ void test__addRedBlackTree_6_degree_add_5_to_tree_with_root_20(void){
 }
 
 /**
-*			   root						root
-*				|		add 15 		 	  |
-*		 		v		----> 		 	  v		
-*			  30(b)						30(b)
-*			 /	   \				   /	  \
-*		  5(r)	    40(r)			5(b)	   40(b)
-*		 /	\		/	\ 			/	\		 / 	 \
-*	 1(b)  20(b)  35(b)	 45(b)	  1(b)	20(r)  35(b)  45(b)
-*	  	   /  \		 				   /  \
-*		10(r) 25(r)			   		10(b)  25(b)
-*									   \
-*									   15(r)
+*		  root		  			  	      root
+*				|		  add 15 		 	       |
+*		 		v		  ----> 		   	      v		
+*			  30(b)		  			  	    30(b)
+*			 /	   \			  	        /	  \
+*		  5(r)    40(r)			      5(b)	   40(b)
+*		 /	\		    /	\ 		      /	\		     / 	 \
+*	 1(b) 20(b) 35(b) 45(b)	  1(b)	20(r)  35(b)  45(b)
+*	  	   /  \		 				          /  \
+*		10(r) 25(r)			   		      10(b)  25(b)
+*									                \
+*									                15(r)
 */
 void test_addRedBlackTree_10_degree_add_15_to_tree_with_root_30(void){
 	
