@@ -977,5 +977,82 @@ void test_addRedBlackTree_additional_add_8(void){
   TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node31);
   TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node5);
   TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node8);
+  
+  //to compare height
+  int leftHeight;
+  int rightHeight;
+  int doubleBlack;
+  
+  leftHeight = checkLeftHeight(&root);
+  rightHeight = checkRightHeight(&root);
+  doubleBlack = findDoubleBlackNode(&root);
+  
+  TEST_ASSERT_EQUAL(2, leftHeight);
+  TEST_ASSERT_EQUAL(2, rightHeight);
+  TEST_ASSERT_EQUAL(0, doubleBlack);
 	
+}
+
+/**
+* To check the height should balance for both sides after adding
+* No doubleBlack Node should exist
+* Removing smaller Node should able to remove all
+*/
+void test_addRedBlackTree_and_remove_all_with_30_nodes(){
+
+  Node *node[30];
+  Node *root = NULL;
+  
+  //Add 20 nodes in random sequece
+  //Value of nodes are 1-30
+  
+  addRedBlackTree(&root, &node10);
+  addRedBlackTree(&root, &node5);
+  addRedBlackTree(&root, &node23);
+  addRedBlackTree(&root, &node2);
+  addRedBlackTree(&root, &node30);
+  addRedBlackTree(&root, &node15);
+  addRedBlackTree(&root, &node3);
+  addRedBlackTree(&root, &node12);
+  addRedBlackTree(&root, &node29);
+  addRedBlackTree(&root, &node25);
+  addRedBlackTree(&root, &node8);
+  addRedBlackTree(&root, &node11);
+  addRedBlackTree(&root, &node28);
+  addRedBlackTree(&root, &node17);
+  addRedBlackTree(&root, &node1);
+  addRedBlackTree(&root, &node19);
+  addRedBlackTree(&root, &node27);
+  addRedBlackTree(&root, &node13);
+  addRedBlackTree(&root, &node9);
+  addRedBlackTree(&root, &node14);
+  addRedBlackTree(&root, &node6);
+  addRedBlackTree(&root, &node26);
+  addRedBlackTree(&root, &node24);
+  addRedBlackTree(&root, &node20);
+  addRedBlackTree(&root, &node4);
+  addRedBlackTree(&root, &node18);
+  addRedBlackTree(&root, &node7);
+  addRedBlackTree(&root, &node22);
+  addRedBlackTree(&root, &node16);
+  addRedBlackTree(&root, &node21);
+
+  //Check and compare the height, left and right should same
+  //Check if there is blackNode
+  int leftHeight = checkLeftHeight(&root);
+  int rightHeight = checkRightHeight(&root);
+  int doubleBlack = findDoubleBlackNode(&root);
+  int i;
+  
+  TEST_ASSERT_EQUAL(leftHeight, rightHeight);
+  TEST_ASSERT_EQUAL(0, doubleBlack);
+
+  //Remove smallest value 1 by 1
+  //Expect the result sort in ascending order in node[]
+  for( i = 0 ; i < 30 ; i++){
+    node[i] = removeNextLargerSuccessor(&root);
+    // printf("Node %d value: %d\n", i, node[i]->data);
+    TEST_ASSERT_EQUAL( i+1, node[i]->data);
+  }
+  
 }

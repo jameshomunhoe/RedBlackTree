@@ -387,3 +387,46 @@ void checkViolationAndRotate(Node **rootPtr){
 		}
 	}
 }
+
+int checkLeftHeight(Node **rootPtr){
+  int counter = 0;
+  
+  if((*rootPtr)->color == 'b'){
+    counter++;
+  }
+  if(leftChild)
+    counter += checkLeftHeight(&leftChild);
+  else if(rightChild)
+    counter += checkLeftHeight(&rightChild);
+
+  return counter;
+}
+
+int checkRightHeight(Node **rootPtr){
+  int counter = 0;
+  
+  if((*rootPtr)->color == 'b'){
+    counter++;
+  }
+  if(rightChild)
+    counter += checkRightHeight(&rightChild);
+  else if(leftChild)
+    counter += checkRightHeight(&leftChild);
+
+  return counter;
+}
+
+int findDoubleBlackNode(Node **rootPtr){
+  int counter = 0;
+   
+  if((*rootPtr)->color == 'd')
+    counter++;
+  
+  if(leftChild)
+    counter += findDoubleBlackNode(&leftChild);
+    
+  if(rightChild)
+    counter += findDoubleBlackNode(&rightChild);
+    
+  return counter;
+}

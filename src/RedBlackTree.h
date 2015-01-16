@@ -29,5 +29,8 @@ int isDoubleBlack(Node *node, Node *removedNode);
 //To check violation and rotate if needed
 void checkViolationAndRotate(Node **rootPtr);
 
+int checkLeftHeight(Node **rootPtr);
+int checkRightHeight(Node **rootPtr);
+int findDoubleBlackNode(Node **rootPtr);
 
 #endif // RedBlackTree_H
