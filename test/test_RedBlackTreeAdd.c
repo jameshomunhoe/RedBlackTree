@@ -1056,3 +1056,80 @@ void test_addRedBlackTree_and_remove_all_with_30_nodes(){
   }
   
 }
+
+void test_addRedBlackTree_dr_poh_test(){
+
+  Node *node[26];
+  Node *root = NULL;
+  
+  addRedBlackTree(&root, &node13);
+  addRedBlackTree(&root, &node10);
+  addRedBlackTree(&root, &node2);
+  addRedBlackTree(&root, &node1);
+  addRedBlackTree(&root, &node5);
+  addRedBlackTree(&root, &node31);
+  addRedBlackTree(&root, &node7);
+  addRedBlackTree(&root, &node19);
+  addRedBlackTree(&root, &node8);
+  addRedBlackTree(&root, &node24);
+  addRedBlackTree(&root, &node12);
+  addRedBlackTree(&root, &node26);
+  addRedBlackTree(&root, &node15);
+  addRedBlackTree(&root, &node21);
+  addRedBlackTree(&root, &node30);
+  addRedBlackTree(&root, &node20);
+  addRedBlackTree(&root, &node22);
+  addRedBlackTree(&root, &node32);
+  addRedBlackTree(&root, &node23);
+  addRedBlackTree(&root, &node29);
+  addRedBlackTree(&root, &node18);
+  addRedBlackTree(&root, &node25);
+  addRedBlackTree(&root, &node11);
+  addRedBlackTree(&root, &node28);
+  addRedBlackTree(&root, &node27);
+  addRedBlackTree(&root, &node3);
+
+  //Check and compare the height, left and right should same
+  //Check if there is blackNode
+  int leftHeight = checkLeftHeight(&root);
+  int rightHeight = checkRightHeight(&root);
+  int doubleBlack = findDoubleBlackNode(&root);
+  int i;
+  
+  TEST_ASSERT_EQUAL(leftHeight, rightHeight);
+  TEST_ASSERT_EQUAL(0, doubleBlack);
+
+  //Remove smallest value 1 by 1
+  //Expect the result sort in ascending order in node[]
+  for( i = 0 ; i < 26 ; i++){
+    node[i] = removeNextLargerSuccessor(&root);
+    // printf("Node %d value: %d\n", i, node[i]->data);
+  }
+    TEST_ASSERT_EQUAL( 1, node[0]->data);
+    TEST_ASSERT_EQUAL( 2, node[1]->data);
+    TEST_ASSERT_EQUAL( 3, node[2]->data);
+    TEST_ASSERT_EQUAL( 5, node[3]->data);
+    TEST_ASSERT_EQUAL( 7, node[4]->data);
+    TEST_ASSERT_EQUAL( 8, node[5]->data);
+    TEST_ASSERT_EQUAL( 10, node[6]->data);
+    TEST_ASSERT_EQUAL( 11, node[7]->data);
+    TEST_ASSERT_EQUAL( 12, node[8]->data);
+    TEST_ASSERT_EQUAL( 13, node[9]->data);
+    TEST_ASSERT_EQUAL( 15, node[10]->data);
+    TEST_ASSERT_EQUAL( 18, node[11]->data);
+    TEST_ASSERT_EQUAL( 19, node[12]->data);
+    TEST_ASSERT_EQUAL( 20, node[13]->data);
+    TEST_ASSERT_EQUAL( 21, node[14]->data);
+    TEST_ASSERT_EQUAL( 22, node[15]->data);
+    TEST_ASSERT_EQUAL( 23, node[16]->data);
+    TEST_ASSERT_EQUAL( 24, node[17]->data);
+    TEST_ASSERT_EQUAL( 25, node[18]->data);
+    TEST_ASSERT_EQUAL( 26, node[19]->data);
+    TEST_ASSERT_EQUAL( 27, node[20]->data);
+    TEST_ASSERT_EQUAL( 28, node[21]->data);
+    TEST_ASSERT_EQUAL( 29, node[22]->data);
+    TEST_ASSERT_EQUAL( 30, node[23]->data);
+    TEST_ASSERT_EQUAL( 31, node[24]->data);
+    TEST_ASSERT_EQUAL( 32, node[25]->data);
+  
+}
