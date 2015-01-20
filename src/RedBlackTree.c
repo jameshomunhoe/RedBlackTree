@@ -58,6 +58,44 @@ void _addRedBlackTree(Node **rootPtr, Node *newNode){
 	checkViolationAndRotate(rootPtr);
 }
 
+void checkViolationAndRotate(Node **rootPtr){
+
+		
+	if((*rootPtr)->left != NULL && (*rootPtr)->left->color == 'r'){
+		if((*rootPtr)->left->left != NULL || (*rootPtr)->left->right != NULL){
+			if((*rootPtr)->left->left != NULL &&(*rootPtr)->left->left->color == 'r')
+				rightRotate(rootPtr);
+		
+			else if((*rootPtr)->left->right != NULL && (*rootPtr)->left->right->color == 'r')
+				leftRightRotate(rootPtr);
+				
+			else 
+				return;
+				
+			(*rootPtr)->left->color = 'r';
+			(*rootPtr)->right->color = 'r';
+      (*rootPtr)->color = 'b';
+		}
+	}
+	
+	else if((*rootPtr)->right != NULL && (*rootPtr)->right->color == 'r'){
+		if((*rootPtr)->right->right != NULL || (*rootPtr)->right->left != NULL){
+			if((*rootPtr)->right->right != NULL &&(*rootPtr)->right->right->color == 'r')
+				leftRotate(rootPtr);
+				
+			else if((*rootPtr)->right->left != NULL &&(*rootPtr)->right->left->color == 'r')
+				rightLeftRotate(rootPtr);
+			
+			else 
+				return;
+				
+			(*rootPtr)->left->color = 'r';
+			(*rootPtr)->right->color = 'r';
+			(*rootPtr)->color = 'b';
+		}
+	}
+}
+
 Node *delRedBlackTree(Node **rootPtr, Node *newNode){
 	Node *retNode = _delRedBlackTree(rootPtr, newNode);
 	
@@ -351,42 +389,6 @@ int isDoubleBlack(Node *node, Node *removedNode){
 	// return retNode;
 
 // }
-
-void checkViolationAndRotate(Node **rootPtr){
-
-		
-	if((*rootPtr)->left != NULL && (*rootPtr)->left->color == 'r'){
-		if((*rootPtr)->left->left != NULL || (*rootPtr)->left->right != NULL){
-			if((*rootPtr)->left->left != NULL &&(*rootPtr)->left->left->color == 'r')
-				rightRotate(rootPtr);
-		
-			else if((*rootPtr)->left->right != NULL && (*rootPtr)->left->right->color == 'r')
-				leftRightRotate(rootPtr);
-				
-			else 
-				return;
-				
-			(*rootPtr)->right->color = 'r';
-      (*rootPtr)->color = 'b';
-		}
-	}
-	
-	else if((*rootPtr)->right != NULL && (*rootPtr)->right->color == 'r'){
-		if((*rootPtr)->right->right != NULL || (*rootPtr)->right->left != NULL){
-			if((*rootPtr)->right->right != NULL &&(*rootPtr)->right->right->color == 'r')
-				leftRotate(rootPtr);
-				
-			else if((*rootPtr)->right->left != NULL &&(*rootPtr)->right->left->color == 'r')
-				rightLeftRotate(rootPtr);
-			
-			else 
-				return;
-				
-			(*rootPtr)->left->color = 'r';
-			(*rootPtr)->color = 'b';
-		}
-	}
-}
 
 int checkLeftHeight(Node **rootPtr){
   int counter = 0;
