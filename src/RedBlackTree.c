@@ -162,10 +162,9 @@ Node *_delRedBlackTree(Node **rootPtr, Node *newNode){
 	return retNode;
 }
 void restructureTree(Node **rootPtr, Node *removedNode){		
-		("hi");
+
 
 	if(isDoubleBlack(leftChild, removedNode)){
-		("hi left");
 		if(isBlack(rightChild)){
 			if(isRed(rightLeftChild) || isRed(rightRightChild))
 				removeLeftCaseOne(rootPtr);
@@ -176,7 +175,6 @@ void restructureTree(Node **rootPtr, Node *removedNode){
 			removeLeftCaseThree(rootPtr, removedNode);
 	}
 	else if(isDoubleBlack(rightChild, removedNode)){
-		("hi right");
 		if(isBlack(leftChild)){
 			if(isRed(leftRightChild) || isRed(leftLeftChild))
 				removeRightCaseOne(rootPtr);
@@ -218,17 +216,21 @@ Node *removeNextLargerSuccessor(Node **rootPtr){
 void removeLeftCaseOne(Node **rootPtr){
 	char rootColor = (*rootPtr)->color;
 	
-	if(isRed(rightRightChild))
-		leftRotate(rootPtr);
+  if(rightChild){
+    if(isRed(rightRightChild))
+      leftRotate(rootPtr);
 	
-	else if(isRed(rightLeftChild))
-		rightLeftRotate(rootPtr);
+    else if(isRed(rightLeftChild))
+      rightLeftRotate(rootPtr);
+  }
 		
 	if((*rootPtr)->left)
 		leftChild->color = 'b';
 	if((*rootPtr)->right)
 		rightChild->color = 'b';
-		
+	if(leftLeftChild && leftLeftChild->color == 'd')
+    leftLeftChild->color = 'b';
+    
 	(*rootPtr)->color = rootColor;
 
 }
@@ -236,16 +238,20 @@ void removeLeftCaseOne(Node **rootPtr){
 void removeRightCaseOne(Node **rootPtr){
 	char rootColor = (*rootPtr)->color;
 	
-	if(isRed(leftLeftChild))
-		rightRotate(rootPtr);
+  if(leftChild){
+    if(isRed(leftLeftChild))
+      rightRotate(rootPtr);
 	
-	else if(isRed(leftRightChild))
-		leftRightRotate(rootPtr);
+    else if(isRed(leftRightChild))
+      leftRightRotate(rootPtr);
+  }
 		
 	if((*rootPtr)->left)
 		leftChild->color = 'b';
 	if((*rootPtr)->right)
 		rightChild->color = 'b';
+  if(rightRightChild && rightRightChild->color == 'd')
+    rightRightChild->color = 'b';
 		
 	(*rootPtr)->color = rootColor;
 
@@ -310,7 +316,8 @@ void removeRightCaseThree(Node **rootPtr, Node *removedNode){
 }
 
 int isRed(Node *node){
-	if(node && node->color == 'r')
+  
+  if(node && node->color == 'r')
 		return 1;
 	else
 		return 0;
@@ -326,24 +333,24 @@ int isBlack(Node *node){
 
 /**
 * Note: x == not possible
-*	node		removed node		return
+*	node		      removed node		return
 *	---------------------------------------
-*	NULL			NULL			  x
-*	NULL			red			  	  0
-*	NULL			black			  1
-*	NULL			double black	  x
-*	red				NULL			  x
-*	red				red			  	  0
-*	red				black			  0
-*	red				double black	  x
-*	black			NULL			  x
-*	black			red			  	  0
-*	black			black			  0
-*	black			double black	  x
-*	double black	NULL			  x
-*	double black	red			  	  1
-*	double black	black			  1
-*	double black	double black	  x
+*	NULL			      NULL			      x
+*	NULL      			red			  	    0
+*	NULL      			black			      1
+*	NULL      			double black	  x
+*	red	      			NULL			      x
+*	red		      		red			  	    0
+*	red			      	black			      0
+*	red		      		double black	  x
+*	black		      	NULL			      x
+*	black	      		red			  	    0
+*	black		      	black			      0
+*	black		      	double black	  x
+*	double black	  NULL			      x
+*	double black	  red			    	  1
+*	double black	  black		    	  1
+*	double black	  double black	  x
 */
 int isDoubleBlack(Node *node, Node *removedNode){
 	if(node  && node->color == 'd')
