@@ -1678,11 +1678,11 @@ void test_addRedBlackTree_node_24(){
   // delRedBlackTree(&root,&node2);
   //fails when i delete 3rd node
   
-  // delRedBlackTree(&root,&node3);
-  // delRedBlackTree(&root,&node4);
+  delRedBlackTree(&root,&node3);
+  delRedBlackTree(&root,&node4);
   // delRedBlackTree(&root,&node5);
-  // delRedBlackTree(&root,&node6);
-  // delRedBlackTree(&root,&node7);
+  delRedBlackTree(&root,&node6);
+  delRedBlackTree(&root,&node7);
 }
 
 // In this case, the nodes all same with adding 1 by 1 test on top
