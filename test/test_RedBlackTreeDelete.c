@@ -8,21 +8,99 @@
 #include "ErrorCode.h"
 #include "CException.h"
 
-Node node1, node2, node5, node10, node15, node20, node25, node30, node35, node40, node45;
+Node node1, 
+     node2, 
+     node3, 
+     node4, 
+     node5, 
+     node6, 
+     node7, 
+     node8, 
+     node9, 
+     node10, 
+     node11, 
+     node12, 
+     node13, 
+     node14, 
+     node15, 
+     node16, 
+     node17, 
+     node18, 
+     node19, 
+     node20, 
+     node21, 
+     node22, 
+     node23, 
+     node24, 
+     node25, 
+     node26, 
+     node27, 
+     node28, 
+     node29, 
+     node30, 
+     node31, 
+     node32, 
+     node33, 
+     node34, 
+     node35, 
+     node36, 
+     node37, 
+     node38, 
+     node39, 
+     node40, 
+     node41, 
+     node42, 
+     node43, 
+     node44, 
+     node45;
 
 
 void setUp(void){
-  resetNode(&node1, 1);
-  resetNode(&node2, 2);
-  resetNode(&node5, 5);
-  resetNode(&node10, 10);
-  resetNode(&node15, 15);
-  resetNode(&node20, 20);
-  resetNode(&node25, 25);
-  resetNode(&node30, 30);
-  resetNode(&node35, 35);
-  resetNode(&node40, 40);
-  resetNode(&node45, 45);
+	resetNode(&node1, 1);
+	resetNode(&node2, 2);
+	resetNode(&node3, 3);
+	resetNode(&node4, 4);
+	resetNode(&node5, 5);
+	resetNode(&node6, 6);
+	resetNode(&node7, 7);
+	resetNode(&node8, 8);
+	resetNode(&node9, 9);
+	resetNode(&node10, 10);
+	resetNode(&node11, 11);
+	resetNode(&node12, 12);
+	resetNode(&node13, 13);
+	resetNode(&node14, 14);
+	resetNode(&node15, 15);
+	resetNode(&node16, 16);
+	resetNode(&node17, 17);
+	resetNode(&node18, 18);
+	resetNode(&node19, 19);
+	resetNode(&node20, 20);
+	resetNode(&node21, 21);
+	resetNode(&node22, 22);
+	resetNode(&node23, 23);
+	resetNode(&node24, 24);
+	resetNode(&node25, 25);
+	resetNode(&node26, 26);
+	resetNode(&node27, 27);
+	resetNode(&node28, 28);
+	resetNode(&node29, 29);
+	resetNode(&node30, 30);
+	resetNode(&node31, 31);
+	resetNode(&node32, 32);
+	resetNode(&node33, 33);
+	resetNode(&node34, 34);
+	resetNode(&node35, 35);
+	resetNode(&node36, 36);
+	resetNode(&node37, 37);
+	resetNode(&node38, 38);
+	resetNode(&node39, 39);
+	resetNode(&node40, 40);
+	resetNode(&node41, 41);
+	resetNode(&node42, 42);
+	resetNode(&node43, 43);
+	resetNode(&node44, 44);
+	resetNode(&node45, 45);
 }
 void tearDown(void){}
 
@@ -1311,4 +1389,70 @@ void test_delRedBlackTree_remove_30b_right_parent_with_case_2a_and_2b(){
   TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node25);
   TEST_ASSERT_EQUAL_NODE(&node25, NULL, 'b', &node35);
   
+}
+
+//Add on test to test failure
+/**                         
+*           root     
+*            v
+*           4(b)  
+*         /       \
+*      2(b)        27(r)
+*     /    \       /     \
+*  1(b)   3(b)  6(b)       29(b)
+*               / \        /    \
+*             5(b) 25(r)  28(b)  30(b)
+*                   /\
+*                7(b) 26(b)
+*                   \
+*                    24(r)
+* solution:
+*
+*       root                                 root                              root
+*       4(b)                                 27(b)                             27(b)
+*     /       \                            /         \                       /          \
+* 2(d)         27(r)                   4(r)           29(b)              6(r)           29(b)
+*    \         /     \                 /     \         /   \             /     \        /     \
+*    3(r)  6(b)     29(b)     -->   2(d)      6(b)  28(b)  30(b)  -->   4(b)   25(b)  28(b)   30(b)
+*           / \        / \             \      /  \                     /  \     /  \
+*         5(b) 25(r) 28(b) 30(b)       3(r)  5(b) 25(r)              2(b) 5(b) 7(b) 26(b)
+*               / \                                / \                 \         \
+*             7(b) 26(b)                        7(b)  26(b)            3(r)      24(r)
+*               \                                \
+*                24(r)                            24(r)
+**/
+void test_delRedBlackTree_remove1_extra_test(){
+
+  setNode(&node24, NULL, NULL, 'r');
+  setNode(&node7, NULL, &node24, 'b');
+  setNode(&node26, NULL, NULL, 'b');
+  setNode(&node5, NULL, NULL, 'b');
+  setNode(&node25, &node7, &node26, 'r');
+  setNode(&node28, NULL, NULL, 'b');
+  setNode(&node30, NULL, NULL, 'b');
+  setNode(&node3, NULL, NULL, 'b');
+  setNode(&node6, &node5, &node25, 'b');
+  setNode(&node29, &node28, &node30, 'b');
+  setNode(&node2, &node1, &node3, 'b');
+  setNode(&node27, &node6, &node29, 'r');
+  setNode(&node4, &node2, &node27, 'b');
+
+
+ Node *root = &node4;
+ delRedBlackTree(&root,&node1);
+  
+ TEST_ASSERT_EQUAL_PTR(&node27, root);
+ TEST_ASSERT_EQUAL_NODE(&node6, &node29, 'b', root);
+ TEST_ASSERT_EQUAL_NODE(&node4, &node25, 'r', &node6);  
+ TEST_ASSERT_EQUAL_NODE(&node28, &node30, 'b', &node29);  
+ TEST_ASSERT_EQUAL_NODE(&node2, &node5, 'b', &node4);  
+ TEST_ASSERT_EQUAL_NODE(&node7, &node26, 'b', &node25);  
+ TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node28);  
+ TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node30);  
+ TEST_ASSERT_EQUAL_NODE(NULL, &node3, 'b', &node2);  
+ TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node5);  
+ TEST_ASSERT_EQUAL_NODE(NULL, &node24, 'b', &node7);  
+ TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node26);  
+ TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node3);  
+ TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node24);
 }

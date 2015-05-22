@@ -1606,18 +1606,6 @@ void test_addRedBlackTree_node_7(){
 *                                                       \
 *                                                        24(r)
 *
-*           root                                    root                              root
-*           4(b)                                    27(b)                             27(b)
-*         /       \                               /         \                       /        \
-*     2(d)         27(r)                       4(r)           29(b)              6(r)         29(b)
-*     /  \         /     \                    /     \         /   \             /     \       /     \
-*        3(r)  6(b)     29(b)               2(d)      6(b)  28(b)  30(b)     4(b)     25(b) 28(b)   30(b)
-*               / \        / \                \      /  \                    /  \     /   \
-*             5(b) 25(r) 28(b) 30(b)          3(r)  5(b) 25(r)             2(b) 5(b) 7(b) 26(b)
-*                   /\                                    / \               \         \
-*                 7(b) 26(b)                           7(b)  26(b)          3(r)      24(r)
-*                   \                                   \
-*                    24(r)                               24(r)
 **/
 void test_addRedBlackTree_node_24(){
   
@@ -1652,43 +1640,12 @@ void test_addRedBlackTree_node_24(){
  TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node30);  
  TEST_ASSERT_EQUAL_NODE(NULL, &node24, 'b', &node7);
  TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node24);  
- 
- 
-  delRedBlackTree(&root,&node1);
-  
- TEST_ASSERT_EQUAL_PTR(&node27, root);
- TEST_ASSERT_EQUAL_NODE(&node6, &node29, 'b', root);
- TEST_ASSERT_EQUAL_NODE(&node4, &node25, 'r', &node6);  
- TEST_ASSERT_EQUAL_NODE(&node28, &node30, 'b', &node29);  
- TEST_ASSERT_EQUAL_NODE(&node2, &node5, 'b', &node4);  
- TEST_ASSERT_EQUAL_NODE(&node7, &node26, 'b', &node25);  
- TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node28);  
- TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node30);  
- TEST_ASSERT_EQUAL_NODE(NULL, &node3, 'b', &node2);  
- TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node5);  
- TEST_ASSERT_EQUAL_NODE(NULL, &node24, 'b', &node7);  
- TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'b', &node26);  
- TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node3);  
- TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node24);
- 
-  
-  
-  
-  
-  // delRedBlackTree(&root,&node2);
-  //fails when i delete 3rd node
-  
-  delRedBlackTree(&root,&node3);
-  delRedBlackTree(&root,&node4);
-  // delRedBlackTree(&root,&node5);
-  delRedBlackTree(&root,&node6);
-  delRedBlackTree(&root,&node7);
 }
 
 // In this case, the nodes all same with adding 1 by 1 test on top
 // but if added 24, deleting will cause bad memory, else it wont
 // Problem might come from delete.
-void xtest_addRedBlackTree_to_fail_test(){
+void test_addRedBlackTree_to_fail_test(){
 
   Node *node[30];
   Node *root = NULL;
@@ -1707,14 +1664,6 @@ void xtest_addRedBlackTree_to_fail_test(){
   addRedBlackTree(&root, &node25);
   addRedBlackTree(&root, &node7);
   addRedBlackTree(&root, &node24);
-  
-  // delRedBlackTree(&root,&node1);
-  // delRedBlackTree(&root,&node2);
-  // delRedBlackTree(&root,&node3);
-  // delRedBlackTree(&root,&node4);
-  // delRedBlackTree(&root,&node5);
-  // delRedBlackTree(&root,&node6);
-  // delRedBlackTree(&root,&node7);
   
  TEST_ASSERT_EQUAL_PTR(&node4, root);
  TEST_ASSERT_EQUAL_NODE(&node2, &node27, 'b', root);
@@ -1733,101 +1682,80 @@ void xtest_addRedBlackTree_to_fail_test(){
  TEST_ASSERT_EQUAL_NODE(NULL, NULL, 'r', &node24);  
 }
 
-/*
-//fails when add until 24 and delete first 7 nodes or add until 11 and removeNexLargerSuccessor 7 times
-void xtest_addRedBlackTree_add_inner_left_test(){
 
+//fails when add until 24 and delete first 7 nodes or add until 11 and removeNexLargerSuccessor 7 times
+void test_addRedBlackTree_add_inner_left_test(){
+  int i;
   Node *node[30];
   Node *root = NULL;
   
-  addRedBlackTree(&root, &node1);
+  addRedBlackTree(&root, &node21);
+  addRedBlackTree(&root, &node18);
+  addRedBlackTree(&root, &node22);
   addRedBlackTree(&root, &node30);
-  addRedBlackTree(&root, &node2);
   addRedBlackTree(&root, &node29);
-  addRedBlackTree(&root, &node3);
-  addRedBlackTree(&root, &node28);
-  addRedBlackTree(&root, &node4);
-  addRedBlackTree(&root, &node27);
-  addRedBlackTree(&root, &node5);
-  addRedBlackTree(&root, &node26);
-  addRedBlackTree(&root, &node6);
-  addRedBlackTree(&root, &node25);
   addRedBlackTree(&root, &node7);
   addRedBlackTree(&root, &node24);
-  // addRedBlackTree(&root, &node8);
-  // addRedBlackTree(&root, &node23);
-  // addRedBlackTree(&root, &node9);
-  // addRedBlackTree(&root, &node22);
-  // addRedBlackTree(&root, &node10);
-  // addRedBlackTree(&root, &node21);
-  // addRedBlackTree(&root, &node11);
-  // addRedBlackTree(&root, &node20);
-  // addRedBlackTree(&root, &node12);
-  // addRedBlackTree(&root, &node19);
-  // addRedBlackTree(&root, &node13);
-  // addRedBlackTree(&root, &node18);
-  // addRedBlackTree(&root, &node14);
-  // addRedBlackTree(&root, &node17);
-  // addRedBlackTree(&root, &node15);
-  // addRedBlackTree(&root, &node16);
+  addRedBlackTree(&root, &node10);
+  addRedBlackTree(&root, &node19);
+  addRedBlackTree(&root, &node16);
+  addRedBlackTree(&root, &node3);
+  addRedBlackTree(&root, &node14);
+  addRedBlackTree(&root, &node5);
+  addRedBlackTree(&root, &node28);
+  addRedBlackTree(&root, &node15);
+  addRedBlackTree(&root, &node11);
+  addRedBlackTree(&root, &node12);
+  addRedBlackTree(&root, &node25);
+  addRedBlackTree(&root, &node6);
+  addRedBlackTree(&root, &node26);
+  addRedBlackTree(&root, &node8);
+  addRedBlackTree(&root, &node17);
+  addRedBlackTree(&root, &node23);
+  addRedBlackTree(&root, &node2);
+  addRedBlackTree(&root, &node27);
+  addRedBlackTree(&root, &node9);
+  addRedBlackTree(&root, &node20);
+  addRedBlackTree(&root, &node13);
+  addRedBlackTree(&root, &node1);
+  addRedBlackTree(&root, &node4);
 
-  // Check and compare the height, left and right should same
-  // Check if there is blackNode
-  int leftHeight = checkLeftHeight(&root);
-  int rightHeight = checkRightHeight(&root);
-  int doubleBlack = findDoubleBlackNode(&root);
-  int i;
-  
-  TEST_ASSERT_EQUAL(leftHeight, rightHeight);
-  TEST_ASSERT_EQUAL(0, doubleBlack);
-
-  delRedBlackTree(&root,&node1);
-  delRedBlackTree(&root,&node2);
-  delRedBlackTree(&root,&node3);
-  delRedBlackTree(&root,&node4);
-  delRedBlackTree(&root,&node5);
-  delRedBlackTree(&root,&node6);
-  delRedBlackTree(&root,&node7);
-  
-  
-  
   
   // Remove smallest value 1 by 1
   // Expect the result sort in ascending order in node[]
-  // for( i = 0 ; i < 7 ; i++){
-    // node[i] = removeNextLargerSuccessor(&root);
-    // printf("Node %d value: %d\n", i, node[i]->data);
-  // }
-    // TEST_ASSERT_EQUAL( 1, node[0]->data);
-    // TEST_ASSERT_EQUAL( 2, node[1]->data);
-    // TEST_ASSERT_EQUAL( 3, node[2]->data);
-    // TEST_ASSERT_EQUAL( 4, node[3]->data);
-    // TEST_ASSERT_EQUAL( 5, node[4]->data);
-    // TEST_ASSERT_EQUAL( 6, node[5]->data);
-    // TEST_ASSERT_EQUAL( 7, node[6]->data);
-    // TEST_ASSERT_EQUAL( 8, node[7]->data);
-    // TEST_ASSERT_EQUAL( 9, node[8]->data);
-    // TEST_ASSERT_EQUAL( 10, node[9]->data);
-    // TEST_ASSERT_EQUAL( 11, node[10]->data);
-    // TEST_ASSERT_EQUAL( 12, node[11]->data);
-    // TEST_ASSERT_EQUAL( 13, node[12]->data);
-    // TEST_ASSERT_EQUAL( 14, node[13]->data);
-    // TEST_ASSERT_EQUAL( 15, node[14]->data);
-    // TEST_ASSERT_EQUAL( 16, node[15]->data);
-    // TEST_ASSERT_EQUAL( 17, node[16]->data);
-    // TEST_ASSERT_EQUAL( 18, node[17]->data);
-    // TEST_ASSERT_EQUAL( 19, node[18]->data);
-    // TEST_ASSERT_EQUAL( 20, node[19]->data);
-    // TEST_ASSERT_EQUAL( 21, node[20]->data);
-    // TEST_ASSERT_EQUAL( 22, node[21]->data);
-    // TEST_ASSERT_EQUAL( 23, node[22]->data);
-    // TEST_ASSERT_EQUAL( 24, node[23]->data);
-    // TEST_ASSERT_EQUAL( 25, node[24]->data);
-    // TEST_ASSERT_EQUAL( 26, node[25]->data);
-    // TEST_ASSERT_EQUAL( 27, node[26]->data);
-    // TEST_ASSERT_EQUAL( 28, node[27]->data);
-    // TEST_ASSERT_EQUAL( 29, node[28]->data);
-    // TEST_ASSERT_EQUAL( 30, node[29]->data);
+  for( i = 0 ; i < 30 ; i++){
+    node[i] = removeNextLargerSuccessor(&root);
+    printf("Node %d value: %d\n", i+1, node[i]->data);
+  }
+    TEST_ASSERT_EQUAL( 1, node[0]->data);
+    TEST_ASSERT_EQUAL( 2, node[1]->data);
+    TEST_ASSERT_EQUAL( 3, node[2]->data);
+    TEST_ASSERT_EQUAL( 4, node[3]->data);
+    TEST_ASSERT_EQUAL( 5, node[4]->data);
+    TEST_ASSERT_EQUAL( 6, node[5]->data);
+    TEST_ASSERT_EQUAL( 7, node[6]->data);
+    TEST_ASSERT_EQUAL( 8, node[7]->data);
+    TEST_ASSERT_EQUAL( 9, node[8]->data);
+    TEST_ASSERT_EQUAL( 10, node[9]->data);
+    TEST_ASSERT_EQUAL( 11, node[10]->data);
+    TEST_ASSERT_EQUAL( 12, node[11]->data);
+    TEST_ASSERT_EQUAL( 13, node[12]->data);
+    TEST_ASSERT_EQUAL( 14, node[13]->data);
+    TEST_ASSERT_EQUAL( 15, node[14]->data);
+    TEST_ASSERT_EQUAL( 16, node[15]->data);
+    TEST_ASSERT_EQUAL( 17, node[16]->data);
+    TEST_ASSERT_EQUAL( 18, node[17]->data);
+    TEST_ASSERT_EQUAL( 19, node[18]->data);
+    TEST_ASSERT_EQUAL( 20, node[19]->data);
+    TEST_ASSERT_EQUAL( 21, node[20]->data);
+    TEST_ASSERT_EQUAL( 22, node[21]->data);
+    TEST_ASSERT_EQUAL( 23, node[22]->data);
+    TEST_ASSERT_EQUAL( 24, node[23]->data);
+    TEST_ASSERT_EQUAL( 25, node[24]->data);
+    TEST_ASSERT_EQUAL( 26, node[25]->data);
+    TEST_ASSERT_EQUAL( 27, node[26]->data);
+    TEST_ASSERT_EQUAL( 28, node[27]->data);
+    TEST_ASSERT_EQUAL( 29, node[28]->data);
+    TEST_ASSERT_EQUAL( 30, node[29]->data);
   
 }
-*/
